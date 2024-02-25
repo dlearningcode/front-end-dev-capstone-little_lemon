@@ -1,0 +1,22 @@
+footer {
+    background-color: #495e57;
+    color: white;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+img {
+    display: inline-block;
+}
+
+section {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+}
