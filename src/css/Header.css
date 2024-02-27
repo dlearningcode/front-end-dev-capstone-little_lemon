@@ -2,3 +2,17 @@ header {
     background-color: #495e57;
     color: white;
 }
+
+header h1, header h2 {
+    margin: 0px;
+    padding: 0px;
+}
+
+header h2 {
+    position: relative;
+    top: -.5em;
+}
+
+header .karla-lead-text {
+    width: 14em;
+}

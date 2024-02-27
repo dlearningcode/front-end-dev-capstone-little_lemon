@@ -6,17 +6,23 @@ footer {
 .flex-row {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-img {
-    display: inline-block;
+footer img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
 }
 
-section {
+footer section {
     display: flex;
-    justify-content: left;
-    align-items: center;
     flex-direction: column;
-    padding: 0 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: .5em;
+    text-align: left;
 }

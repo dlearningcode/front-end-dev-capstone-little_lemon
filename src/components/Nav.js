@@ -5,8 +5,10 @@ export default function Nav() {
   return (
     <nav>
       <div class="container display-flex">
-        <img src={logoHorizontal} alt="Little Lemon logo" />
         <ul>
+          <li>
+            <img src={logoHorizontal} alt="Little Lemon logo" />
+          </li>
           <li>
             <a href="/">Home</a>
           </li>
