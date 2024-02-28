@@ -5,19 +5,27 @@ export default function Header() {
   return (
     <header>
       <div class="container">
-        <div class="header-container__right">
-          <img src={headerHero} alt="Little Lemon Restaurant food" />
-        </div>
-        <div class="header-container__left">
-          <h1 class="text-primary-2">Little Lemon</h1>
-          <h2>Chicago</h2>
-          <p class="karla-lead-text">
-            We are a family owned Mediterranean restaurant, focused on
-            traditional recipes served with a modern twist.
-          </p>
-          <button class="button color-primary-2">
-            <a href="/">Reserve a Table</a>
-          </button>
+        <div class="content-grid">
+          <div class="header-container__right">
+            <div class="hero-container">
+              <img
+                src={headerHero}
+                alt="Little Lemon Restaurant food"
+                class="header-hero"
+              />
+            </div>
+          </div>
+          <div class="header-container__left">
+            <h1 class="text-primary-2">Little Lemon</h1>
+            <h2>Chicago</h2>
+            <p class="karla-lead-text">
+              We are a family owned Mediterranean restaurant, focused on
+              traditional recipes served with a modern twist.
+            </p>
+              <a href="/" class="button color-primary-2">
+                Reserve a Table
+              </a>
+          </div>
         </div>
       </div>
     </header>
