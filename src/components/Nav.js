@@ -4,7 +4,7 @@ import "../css/Nav.css";
 export default function Nav() {
   return (
     <nav>
-      <div class="container display-flex">
+      <div class="container">
         <ul>
           <li>
             <img src={logoHorizontal} alt="Little Lemon logo" />

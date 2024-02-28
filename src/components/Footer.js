@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer>
       <div class="container flex-row">
-        <section>
+        <section class="top-padding-0">
           <img src={logoVertWhite} alt="Little Lemon logo" />
         </section>
         <section>

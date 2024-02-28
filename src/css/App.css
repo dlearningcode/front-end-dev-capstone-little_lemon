@@ -31,7 +31,8 @@
   font-style: normal;
 }
 
-p, .karla-paragraph-text {
+p,
+.karla-paragraph-text {
   font-family: "Karla", sans-serif;
   font-optical-sizing: auto;
   font-size: 1em;
@@ -56,7 +57,7 @@ h1,
   font-style: normal;
 }
 
-h2, 
+h2,
 .markazi-text-sub-title {
   font-family: "Markazi Text", serif;
   font-optical-sizing: auto;
@@ -70,7 +71,7 @@ h2,
 }
 
 .text-primary-2 {
-  color: #F4CE14;
+  color: #f4ce14;
 }
 
 .text-white {
@@ -82,7 +83,7 @@ h2,
 }
 
 .color-primary-2 {
-  background-color: #F4CE14;
+  background-color: #f4ce14;
 }
 
 .button {
@@ -92,16 +93,26 @@ h2,
   font-size: 1.1em;
   font-weight: 700;
   font-style: normal;
-  padding: 1em 2em;
+  padding: 0.75em 2em;
   margin: 1em 0;
   border: none;
   border-radius: 16px;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
+}
+
+img {
+  /* a better img reset */
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 1rem;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 .App {
-  min-height: 100vh;
   /* font-size: calc(10px + 2vmin); */
   text-align: left;
   margin: 0 auto;
@@ -109,6 +120,7 @@ h2,
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr auto;
   grid-template-areas: "nav" "header" "main" "footer";
+  min-height: 100vh;
 }
 
 .container {

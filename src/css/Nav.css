@@ -1,5 +1,6 @@
 nav {
   background-color: white;
+  grid-area: nav;
 }
 
 .display-flex {
@@ -17,7 +18,7 @@ nav img {
   object-fit: contain;
 }
 
-nav .display-flex ul {
+nav .container ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
