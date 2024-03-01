@@ -6,7 +6,7 @@ header {
 }
 
 header + main {
-  margin-top: var(--padding-x-large);
+  margin-top: var(--padding-large);
 }
 
 header h1,
@@ -34,10 +34,8 @@ header .wrapper {
 }
 
 header .content-grid {
-  padding-inline: var(--padding-med);
   margin-inline: auto;
   display: grid;
-  /* gap: 1em; */
   grid-template-columns: 1fr 1fr;
 }
 
@@ -65,14 +63,13 @@ header .content-grid {
   display: block;
   border-radius: var(--radius-large);
   width: auto;
-  max-width: 400px;
   max-height: 400px;
-  aspect-ratio: 5 / 6;
+  aspect-ratio: 0.8;
   object-fit: cover;
   object-position: top center;
 }
 
-@media (max-width: var(--breakpoint-tablet-med)) {
+@media (max-width: 617px) {
   header {
     margin-bottom: 0;
   }

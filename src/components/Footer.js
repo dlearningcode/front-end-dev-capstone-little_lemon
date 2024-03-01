@@ -1,5 +1,4 @@
 import logoVertWhite from "../assets/images/logo_vert_word_white.png";
-
 import "../css/Footer.css";
 
 export default function Footer() {

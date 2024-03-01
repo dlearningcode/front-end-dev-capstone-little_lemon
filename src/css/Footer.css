@@ -23,7 +23,7 @@ footer .wrapper {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1em;
+  gap: var(--padding-med);
 }
 
 footer img {
@@ -39,11 +39,11 @@ footer section {
   justify-content: flex-start;
   align-items: flex-start;
   text-align: left;
-  padding: 1em 0;
+  padding: 0;
 }
 
-footer .wrapper section:first-child {
-  padding-top: 0px;
+footer .wrapper section:not(:first-child) {
+  padding-top: var(--padding-x-small);
 }
 
 footer li {
@@ -52,9 +52,9 @@ footer li {
   margin: 0;
 }
 
-@media (max-width: 340px) {
+@media (max-width: 450px) {
   footer .wrapper {
-    padding: 0;
+    justify-content: center;
   }
 
   footer .flex-row {

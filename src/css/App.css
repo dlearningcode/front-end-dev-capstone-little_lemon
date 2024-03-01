@@ -27,9 +27,11 @@
   --radius-large: 1rem;
   --max-content-width: 50em;
   --fixed-width: 620px;
-  --breakpoint-tablet-large: 640px;
-  --breakpoint-tablet-medium: 617px;
-  --breakpoint-phone-medium: 340px;
+  --width-tablet-lg: 640px;
+  --width-tablet-med: 617px;
+  --width-phone-med: 340px;
+  --width-phone-sm: 320px;
+  --width-phone-lg: 450px;
   --ff-primary: "Karla", sans-serif;
   --ff-secondary: "Markazi Text", serif;
   --fw-primary-reg: 400;
@@ -44,7 +46,7 @@
   --fs-large: 1.25em;
   --fs-subtitle: 2.5em;
   --fs-title: 4em;
-} 
+}
 
 /* Resets */
 
@@ -99,6 +101,10 @@ a {
 
 p,
 .paragraph-text {
+  max-width: 65ch;
+  line-height: 1.5;
+  margin-top: var(--padding-small);
+  margin-bottom: var(--padding-small);
   font-family: var(--ff-primary);
   font-optical-sizing: auto;
   font-size: var(--fs-normal);
@@ -144,13 +150,21 @@ h4,
   font-style: normal;
 }
 
-.highlight-text {
-  font-weight: var(--fw-primary-med);
-}
-
+h5,
 .this-weeks-specials {
   font-weight: var(--fw-primary-x-bold);
   font-style: normal;
+}
+h6,
+.caption-heading {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-primary-bold);
+  font-style: normal;
+}
+
+span,
+.highlight-text {
+  font-weight: var(--fw-primary-med);
 }
 
 .lead-text {
@@ -241,7 +255,7 @@ h4,
   min-width: 10rem;
   max-width: 50rem;
   overflow: hidden;
-  padding: 2rem 1rem;
+  padding: var(--padding-large) var(--padding-med);
 }
 
 .flex-row-stretch {
