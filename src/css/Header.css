@@ -2,6 +2,11 @@ header {
   background-color: #495e57;
   color: white;
   grid-area: header;
+  margin-bottom: var(--padding-x-large);
+}
+
+header + main {
+  margin-top: var(--padding-x-large);
 }
 
 header h1,
@@ -10,42 +15,47 @@ header h2 {
   padding: 0px;
 }
 
+header h1 {
+  line-height: 0.9;
+}
+
 header h2 {
   position: relative;
-  top: -0.5em;
+  top: calc(var(--padding-x-small) * -1);
 }
 
-header .karla-lead-text {
-  width: 14em;
+header .lead-text {
+  max-width: 14em;
+  margin-bottom: var(--padding-small);
 }
 
-header .container {
+header .wrapper {
   overflow: visible;
 }
 
 header .content-grid {
-  padding-inline: 1em;
+  padding-inline: var(--padding-med);
   margin-inline: auto;
   display: grid;
   /* gap: 1em; */
   grid-template-columns: 1fr 1fr;
 }
 
-.header-container__left {
+.header-wrapper__left {
   position: relative;
   grid-row: 1;
   grid-column: 1;
   z-index: 5;
 }
 
-.header-container__right {
+.header-wrapper__right {
   position: relative;
   grid-row: 1;
   grid-column: 2;
   z-index: 1;
 }
 
-.hero-container {
+.hero-wrapper {
   position: absolute;
   top: 0;
   right: 0;
@@ -53,17 +63,25 @@ header .content-grid {
 
 .header-hero {
   display: block;
-  border-radius: 16px;
+  border-radius: var(--radius-large);
   width: auto;
   max-width: 400px;
   max-height: 400px;
-  aspect-ratio: 5/6;
+  aspect-ratio: 5 / 6;
   object-fit: cover;
   object-position: top center;
 }
 
-@media (max-width: 617px) {
-  header .container {
+@media (max-width: var(--breakpoint-tablet-med)) {
+  header {
+    margin-bottom: 0;
+  }
+
+  header + main {
+    margin-top: 0;
+  }
+
+  header .wrapper {
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -81,19 +99,19 @@ header .content-grid {
     grid-column: 1 / -1;
   }
 
-  .header-container__right,
-  .hero-container {
+  .header-wrapper__right,
+  .hero-wrapper {
     margin: 0;
     padding: 0;
     width: 100%;
   }
 
-  .hero-container {
+  .hero-wrapper {
     position: relative;
   }
 
   .header-hero {
-    max-width: 640px;
+    max-width: var(--breakpoint-tablet-large);
     width: 100%;
     /* max-height: 400px; */
     opacity: 0.2;

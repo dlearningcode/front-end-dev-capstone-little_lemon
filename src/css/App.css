@@ -1,109 +1,77 @@
-.karla-lead-text {
-  font-family: "Karla", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1.13em;
-  font-weight: 600;
-  font-style: normal;
-}
+/* Variables */
 
-.karla-section-title {
-  font-family: "Karla", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1.25em;
-  font-weight: 800;
-  font-style: normal;
-  text-transform: uppercase;
-}
+:root {
+  --primary-1: #495e57;
+  --primary-2: #f4ce14;
+  --secondary-1-warning: #ee9972;
+  --secondary-2: #fbdabb;
+  --highlight-1: #edefee;
+  --highlight-2: #333;
+  --white: #fff;
+  --black: #000;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --transition-reg: all 0.3s ease;
+  --transition-fast: all 0.1s ease;
+  --transition-slow: all 0.5s ease;
+  --spacing: 0.25rem;
+  --padding-x-small: 0.5rem;
+  --padding-small: 0.75rem;
+  --padding-med: 1rem;
+  --padding-large: 2rem;
+  --padding-x-large: 3rem;
+  --gap-small: 0.5rem;
+  --gap-med: 1rem;
+  --gap-large: 2rem;
+  --radius-small: 0.5rem;
+  --radius-large: 1rem;
+  --max-content-width: 50em;
+  --fixed-width: 620px;
+  --breakpoint-tablet-large: 640px;
+  --breakpoint-tablet-medium: 617px;
+  --breakpoint-phone-medium: 340px;
+  --ff-primary: "Karla", sans-serif;
+  --ff-secondary: "Markazi Text", serif;
+  --fw-primary-reg: 400;
+  --fw-primary-med: 500;
+  --fw-primary-bold: 700;
+  --fw-primary-x-bold: 800;
+  --fw-secondary-reg: 400;
+  --fw-secondary-med: 500;
+  --fs-normal: 1em;
+  --fs-small: 0.875em;
+  --fs-medium: 1.125em;
+  --fs-large: 1.25em;
+  --fs-subtitle: 2.5em;
+  --fs-title: 4em;
+} 
 
-.karla-section-category {
-  font-family: "Karla", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1em;
-  font-weight: 800;
-  font-style: normal;
-}
+/* Resets */
 
-.karla-card-title {
-  font-family: "Karla", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1.13em;
-  font-weight: 700;
-  font-style: normal;
-}
-
-p,
-.karla-paragraph-text {
-  font-family: "Karla", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1em;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.karla-highlight-text {
-  font-family: "Karla", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1em;
-  font-weight: 400;
-  font-style: normal;
-}
-
-h1,
-.markazi-text-display-title {
-  font-family: "Markazi Text", serif;
-  font-optical-sizing: auto;
-  font-size: 4em;
-  font-weight: 500;
-  font-style: normal;
-  line-height: 1.1;
-}
-
-h2,
-.markazi-text-sub-title {
-  font-family: "Markazi Text", serif;
-  font-optical-sizing: auto;
-  font-size: 2.5em;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.text-primary-1 {
-  color: #495e57;
-}
-
-.text-primary-2 {
-  color: #f4ce14;
-}
-
-.text-white {
-  color: white;
-}
-
-.color-primary-1 {
-  background-color: #495e57;
-}
-
-.color-primary-2 {
-  background-color: #f4ce14;
-}
-
-.button {
-  display: inline-block;
-  font-family: "Karla", sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1.1em;
-  font-weight: 700;
-  font-style: normal;
-  padding: 0.75em 2em;
+*,
+*::before,
+*::after {
   margin: 0;
-  border: none;
-  border-radius: 16px;
-  cursor: pointer;
-  transition: all 0.3s;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* html {
+  font-size: 62.5%;
+} */
+
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-normal);
+  line-height: 1.5;
+  color: var(--black);
+  font-optical-sizing: auto;
+  background-color: var(--white);
+  margin: 0;
+  padding: 0;
 }
 
 img {
-  /* a better img reset */
   font-style: italic;
   background-repeat: no-repeat;
   background-size: cover;
@@ -112,6 +80,148 @@ img {
   height: auto;
   vertical-align: middle;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Typography */
+
+p,
+.paragraph-text {
+  font-family: var(--ff-primary);
+  font-optical-sizing: auto;
+  font-size: var(--fs-normal);
+  font-weight: 200;
+  font-style: normal;
+}
+
+h1,
+.display-title {
+  font-family: var(--ff-secondary);
+  font-optical-sizing: auto;
+  font-size: var(--fs-title);
+  font-weight: var(--fw-secondary-med);
+  font-style: normal;
+  line-height: 1.1;
+}
+
+h2,
+.sub-title {
+  font-family: var(--ff-secondary);
+  font-optical-sizing: auto;
+  font-size: var(--fs-subtitle);
+  font-weight: var(--fw-secondary-reg);
+  font-style: normal;
+}
+
+h3,
+.section-title {
+  font-family: var(--ff-primary);
+  font-optical-sizing: auto;
+  font-size: var(--fs-large);
+  font-weight: var(--fw-primary-x-bold);
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+h4,
+.card-title {
+  font-family: var(--ff-primary);
+  font-optical-sizing: auto;
+  font-size: var(--fs-medium);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.highlight-text {
+  font-weight: var(--fw-primary-med);
+}
+
+.this-weeks-specials {
+  font-weight: var(--fw-primary-x-bold);
+  font-style: normal;
+}
+
+.lead-text {
+  font-size: var(--fs-medium);
+  font-weight: var(--fw-primary-med);
+  font-style: normal;
+}
+
+.text-primary-1 {
+  color: var(--primary-1);
+}
+
+.text-primary-2 {
+  color: var(--primary-2);
+}
+
+.text-white {
+  color: white;
+}
+
+.color-primary-1 {
+  background-color: var(--primary-1);
+}
+
+.color-primary-2 {
+  background-color: var(--primary-2);
+}
+
+/* Buttons */
+
+.button {
+  display: inline-block;
+  font-family: var(--ff-primary);
+  font-optical-sizing: auto;
+  font-size: var(--fs-large);
+  font-weight: var(--fw-primary-bold);
+  font-style: normal;
+  padding: var(--padding-small) var(--padding-large);
+  margin: 0;
+  border: none;
+  border-radius: var(--radius-large);
+  cursor: pointer;
+  transition: var(--transition-reg);
+}
+
+.button-primary-1 {
+  background-color: var(--primary-1);
+  color: var(--white);
+}
+
+.button-primary-2 {
+  background-color: var(--primary-2);
+  color: var(--black);
+}
+
+.button-secondary-1 {
+  background-color: var(--secondary-1-warning);
+  color: var(--black);
+}
+
+.button-secondary-2 {
+  background-color: var(--secondary-2);
+  color: var(--black);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--light-shadow);
+}
+
+/* Grid */
 
 .App {
   /* font-size: calc(10px + 2vmin); */
@@ -124,23 +234,19 @@ img {
   min-height: 100vh;
 }
 
-.container {
-  margin-inline: auto;
+/* Layout */
+
+.wrapper {
+  margin: 0 auto;
   min-width: 10rem;
   max-width: 50rem;
   overflow: hidden;
   padding: 2rem 1rem;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: block;
-}
-
-a {
-  text-decoration: none;
+.flex-row-stretch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  align-items: center;
 }

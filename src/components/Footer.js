@@ -5,8 +5,8 @@ import "../css/Footer.css";
 export default function Footer() {
   return (
     <footer>
-      <div class="container flex-row">
-        <section class="top-padding-0">
+      <div class="wrapper">
+        <section>
           <img src={logoVertWhite} alt="Little Lemon logo" />
         </section>
         <section>

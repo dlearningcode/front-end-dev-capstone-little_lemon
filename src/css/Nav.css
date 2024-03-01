@@ -3,13 +3,6 @@ nav {
   grid-area: nav;
 }
 
-.display-flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: stretch;
-  align-items: center;
-}
-
 nav img {
   display: inline-block;
   width: auto;
@@ -18,7 +11,7 @@ nav img {
   object-fit: contain;
 }
 
-nav .container ul {
+nav .wrapper ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -30,6 +23,6 @@ nav .container ul {
 
 nav li {
   display: inline-block;
-  padding: 0 .5em;
+  padding: 0 var(--padding-x-small);
   margin: 0px;
 }

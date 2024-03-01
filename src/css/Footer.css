@@ -1,5 +1,5 @@
 footer {
-  background-color: #495e57;
+  background-color: var(--primary-1);
   color: white;
   grid-area: footer;
 }
@@ -17,7 +17,7 @@ footer p {
   padding-top: 0;
 }
 
-footer .flex-row {
+footer .wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -27,7 +27,6 @@ footer .flex-row {
 }
 
 footer img {
-  display: block;
   width: auto;
   height: auto;
   max-height: 300px;
@@ -43,7 +42,7 @@ footer section {
   padding: 1em 0;
 }
 
-footer .top-padding-0 {
+footer .wrapper section:first-child {
   padding-top: 0px;
 }
 
@@ -54,7 +53,7 @@ footer li {
 }
 
 @media (max-width: 340px) {
-  footer .container {
+  footer .wrapper {
     padding: 0;
   }
 
