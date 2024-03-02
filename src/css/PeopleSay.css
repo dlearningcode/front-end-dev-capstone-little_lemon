@@ -1,0 +1,6 @@
+.section-people-say {
+  padding: var(--padding-med) 0;
+  background-color: var(--primary-1);
+  color: white;
+  /* text-align: center; */
+}

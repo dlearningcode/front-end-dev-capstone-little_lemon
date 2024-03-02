@@ -1,19 +1,36 @@
 import "./css/App.css";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
-import Header from "./components/Header";
 import Main from "./components/Main";
+import Homepage from "./components/Homepage";
+import About from "./components/About";
+import Menu from "./components/Menu";
+import Reservations from "./components/Reservations";
+import OrderOnline from "./components/OrderOnline";
+import Login from "./components/Login";
 import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div class="App">
-      <Nav />
-      <Header />
-      <Main />
-      <Footer />
-    </div>
-  )
-
+    <Router>
+      <div className="App">
+        <Nav />
+        <Main>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/reservations" element={<Reservations />} />
+            <Route path="/order-online" element={<OrderOnline />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<h1>Page Not Found</h1>} />
+          </Routes>
+        </Main>
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
 export default App;

@@ -1,31 +1,32 @@
+import { Link } from "react-router-dom";
 import logoHorizontal from "../assets/images/logo_horizontal.png";
 import "../css/Nav.css";
 
 export default function Nav() {
   return (
     <nav>
-      <div class="wrapper">
+      <div className="wrapper">
         <ul>
           <li>
             <img src={logoHorizontal} alt="Little Lemon logo" />
           </li>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="/">Menu</a>
+            <Link to="/menu">Menu</Link>
           </li>
           <li>
-            <a href="/">Reservations</a>
+            <Link to="/reservations">Reservations</Link>
           </li>
           <li>
-            <a href="/">Order Online</a>
+            <Link to="/order-online">Order Online</Link>
           </li>
           <li>
-            <a href="/">Login</a>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </div>
