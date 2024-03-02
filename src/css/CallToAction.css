@@ -1,7 +1,6 @@
 header {
   background-color: #495e57;
   color: white;
-  grid-area: header;
   margin-bottom: var(--padding-x-large);
 }
 
@@ -63,8 +62,7 @@ header .content-grid {
   display: block;
   border-radius: var(--radius-large);
   width: auto;
-  max-height: 400px;
-  aspect-ratio: 0.8;
+  max-height: 380px;
   object-fit: cover;
   object-position: top center;
 }

@@ -1,3 +1,5 @@
+import "../css/Chicago.css";
+
 export default function Chicago() {
   return (
     <section className="section-chicago">

@@ -1,3 +1,5 @@
+import "../css/Reservations.css";
+
 export default function Reservations() {
   return (
     <div>

@@ -1,3 +1,5 @@
+import "../css/Specials.css";
+
 export default function Specials() {
   return (
     <section class="section-specials">
