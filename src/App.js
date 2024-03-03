@@ -10,6 +10,7 @@ import Reservations from "./components/Reservations";
 import OrderOnline from "./components/OrderOnline";
 import Login from "./components/Login";
 import Footer from "./components/Footer";
+import Test from "./components/Test";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/reservations" element={<Reservations />} />
             <Route path="/order-online" element={<OrderOnline />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/test" element={<Test />} />
             <Route path="*" element={<h1>Page Not Found</h1>} />
           </Routes>
         </Main>

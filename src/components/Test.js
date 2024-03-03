@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom";
-import "../css/Specials.css";
+import "../css/Test.css";
 import greekSalad from "../assets/images/greek_salad.jpg";
 import bruschetta from "../assets/images/bruschetta.jpg";
 import lemonDessert from "../assets/images/lemon_dessert.jpg";
 import deliveryBike from "../assets/images/delivery_bike.svg";
 
-export default function Specials() {
+export default function Test() {
   return (
-    <section className="section-specials">
+    <section className="section-test">
       <div className="wrapper">
         <div class="title-button">
-          <h2 className="text-primary-2">This Week's Specials</h2>
+          <h2 className="text-primary-2">This Week's test</h2>
           <Link to="/menu" className="button button-primary-2">
             Online Menu
           </Link>
         </div>
-        <div className="specials-wrapper">
-          <div className="specials-grid">
+        <div className="test-wrapper">
+          <div className="test-grid">
             <div className="special">
               <img src={greekSalad} alt="Greek Salad" />
               <div className="special__text">
