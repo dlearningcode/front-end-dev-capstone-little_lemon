@@ -21,6 +21,7 @@ header h1 {
 header h2 {
   position: relative;
   top: calc(var(--padding-x-small) * -1);
+  color: var(--text-primary-2);
 }
 
 header .lead-text {
@@ -92,6 +93,11 @@ header .content-grid {
   header .content-grid > * {
     grid-row: 1 / -1;
     grid-column: 1 / -1;
+  }
+
+  .header-wrapper__left, .lead-text {
+    text-align: center;
+    margin-inline: auto;
   }
 
   .header-wrapper__right,

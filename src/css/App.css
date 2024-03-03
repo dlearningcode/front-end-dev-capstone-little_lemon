@@ -258,6 +258,20 @@ span,
   padding: var(--padding-large) 0;
 }
 
+@media (max-width: 900px) {
+  .wrapper {
+    width: 100vw;
+    padding: var(--padding-large);
+  }
+}
+
+@media (max-width: 617px) {
+  .wrapper {
+    width: 100vw;
+    padding: var(--padding-med);
+  }
+}
+
 .text-wrapper {
   margin: 0 auto;
   min-width: 20ch;
@@ -270,5 +284,12 @@ span,
   display: flex;
   flex-wrap: wrap;
   justify-content: stretch;
+  align-items: center;
+}
+
+.flex-row-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
 }
