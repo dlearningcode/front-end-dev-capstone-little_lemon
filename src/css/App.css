@@ -255,7 +255,15 @@ span,
   min-width: 10rem;
   max-width: 50rem;
   overflow: hidden;
-  padding: var(--padding-large) var(--padding-med);
+  padding: var(--padding-large) 0;
+}
+
+.text-wrapper {
+  margin: 0 auto;
+  min-width: 20ch;
+  max-width: 65ch;
+  overflow: hidden;
+  padding: var(--padding-large) 0;
 }
 
 .flex-row-stretch {

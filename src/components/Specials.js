@@ -1,25 +1,76 @@
+import { Link } from "react-router-dom";
 import "../css/Specials.css";
+import greekSalad from "../assets/images/greek_salad.jpg";
+import bruschetta from "../assets/images/bruschetta.jpg";
+import lemonDessert from "../assets/images/lemon_dessert.jpg";
+import deliveryBike from "../assets/images/delivery_bike.svg";
 
 export default function Specials() {
   return (
-    <section class="section-specials">
-      <div class="wrapper">
-        <h2 class="text-primary-2">Today's Specials</h2>
-        <div class="content-grid">
-          <div class="specials-wrapper">
-            <div class="specials">
-              <h3>Appetizer</h3>
-              <p>
-                Hummus, baba ganoush, and tabouli served with warm pita bread.
-              </p>
+    <section className="section-specials">
+      <div className="wrapper">
+        <div class="title-button">
+          <h2 className="text-primary-2">This Week's Specials</h2>
+          <Link to="/menu" className="button button-primary-2">
+            Online Menu
+          </Link>
+        </div>
+        <div className="specials-wrapper">
+          <div className="specials-grid">
+            <div className="special">
+              <img src={greekSalad} alt="Greek Salad" />
+              <div className="special__text">
+                <div className="special__headline">
+                  <h4>Greek Salad</h4>
+                  <p>$12.99</p>
+                </div>
+                <p>
+                  The famous greek salad of crispy lettuce, peppers, olives and
+                  our Chicago style feta cheese, garnished with crunchy garlic
+                  and rosemary croutons.
+                </p>
+                <div className="special__delivery">
+                  <p>Order a delivery</p>
+                  <img src={deliveryBike} alt="Delivery Bike" />
+                </div>
+              </div>
             </div>
-            <div class="specials">
-              <h3>Entree</h3>
-              <p>Lamb shank served with rice pilaf and grilled vegetables.</p>
+            <div className="special">
+              <img src={bruschetta} alt="Bruschetta" />
+              <div className="special__text">
+                <div className="special__headline">
+                  <h4>Bruschetta</h4>
+                  <p>$9.99</p>
+                </div>
+                <p>
+                  A classic Italian starter, our bruschetta is made with fresh
+                  tomatoes, basil, garlic and olive oil on toasted ciabatta
+                  bread.
+                </p>
+                <div className="special__delivery">
+                  <p>Order a delivery</p>
+                  <img src={deliveryBike} alt="Delivery Bike" />
+                </div>
+              </div>
             </div>
-            <div class="specials">
-              <h3>Dessert</h3>
-              <p>Baklava served with a scoop of vanilla ice cream.</p>
+            <div className="special">
+              <img src={lemonDessert} alt="Lemon Dessert" />
+              <div className="special__text">
+                <div className="special__headline">
+                  <h4>Lemon Dessert</h4>
+                  <p>$6.99</p>
+                </div>
+                <div class="special__description">
+                  <p>
+                    A refreshing dessert made with fresh lemons, our lemon dessert
+                    is the perfect way to end a meal at Little Lemon.
+                  </p>
+                </div>
+                <div className="special__delivery">
+                  <p>Order a delivery</p>
+                  <img src={deliveryBike} alt="Delivery Bike" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
