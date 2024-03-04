@@ -1,32 +1,42 @@
 import "../css/Chicago.css";
+import marioAdrianA from "../assets/images/mario-adrian-a.jpg";
+import marioAdrianB from "../assets/images/mario-adrian-b.jpg";
 
 export default function Chicago() {
   return (
     <section className="section-chicago">
       <div className="wrapper">
-        <h2 className="text-primary-2">Chicago</h2>
-        <div className="content-grid">
-          <div className="chicago-wrapper">
+        <div className="chicago-grid">
+          <div className="chicago-text">
+            <h2 className="display-title">Little Lemon</h2>
+            <h3 className="sub-title">Chicago</h3>
             <div className="chicago">
               <p>
-                "The food is amazing! I love the atmosphere and the staff is
-                great. I highly recommend the lamb shank and the baklava."
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Molestiae ipsam maxime ea veniam nostrum! Nihil harum quis at
+                labore, ducimus necessitatibus repudiandae blanditiis eius
+                cumque. Minima quaerat hic iure sint. Modi enim reprehenderit
+                impedit distinctio nisi? Cumque repellat a aspernatur, nihil
+                excepturi possimus autem sunt, inventore eveniet incidunt
+                tenetur nam consectetur enim sed placeat rem voluptatum, libero
+                aliquam soluta deserunt?
               </p>
-              <h3>John Doe</h3>
             </div>
-            <div className="chicago">
-              <p>
-                "The best Mediterranean food in Chicago! The service is
-                excellent and the prices are very reasonable."
-              </p>
-              <h3>Jane Doe</h3>
+          </div>
+          <div className="chicago-pics">
+            <div className="chicago-pic-1">
+              <img
+                src={marioAdrianA}
+                alt="Mario and Adrian"
+                className="mario-adrian-a"
+              />
             </div>
-            <div className="chicago">
-              <p>
-                "The food is amazing! I love the atmosphere and the staff is
-                great. I highly recommend the lamb shank and the baklava."
-              </p>
-              <h3>John Doe</h3>
+            <div className="chicago-pic-2">
+              <img
+                src={marioAdrianB}
+                alt="Mario and Adrian"
+                className="mario-adrian-b"
+              />
             </div>
           </div>
         </div>
