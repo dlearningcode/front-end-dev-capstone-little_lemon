@@ -1,52 +1,52 @@
-header {
+.section-call-to-action {
   background-color: #495e57;
   color: white;
   margin-bottom: var(--padding-x-large);
 }
 
-header + main {
+.section-call-to-action + main {
   margin-top: var(--padding-large);
 }
 
-header h1,
-header h2 {
+.section-call-to-action h1,
+.section-call-to-action h2 {
   margin: 0px;
   padding: 0px;
 }
 
-header h1 {
+.section-call-to-action h1 {
   line-height: 0.9;
 }
 
-header h2 {
+.section-call-to-action h2 {
   position: relative;
   top: calc(var(--padding-x-small) * -1);
   color: var(--text-primary-2);
 }
 
-header .lead-text {
+.section-call-to-action .lead-text {
   max-width: 14em;
   margin-bottom: var(--padding-small);
 }
 
-header .wrapper {
+.section-call-to-action .wrapper {
   overflow: visible;
 }
 
-header .content-grid {
+.section-call-to-action .content-grid {
   margin-inline: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-.header-wrapper__left {
+.cta-wrapper__left {
   position: relative;
   grid-row: 1;
   grid-column: 1;
   z-index: 5;
 }
 
-.header-wrapper__right {
+.cta-wrapper__right {
   position: relative;
   grid-row: 1;
   grid-column: 2;
@@ -59,7 +59,7 @@ header .content-grid {
   right: 0;
 }
 
-.header-hero {
+.cta-hero {
   display: block;
   border-radius: var(--radius-large);
   width: auto;
@@ -69,38 +69,39 @@ header .content-grid {
 }
 
 @media (max-width: 617px) {
-  header {
+  .section-call-to-action {
     margin-bottom: 0;
   }
 
-  header + main {
+  .section-call-to-action + main {
     margin-top: 0;
   }
 
-  header .wrapper {
+  .section-call-to-action .wrapper {
     margin: 0;
     padding: 0;
     overflow: hidden;
   }
 
-  header .content-grid {
+  .section-call-to-action .content-grid {
     display: grid;
     place-items: center;
     margin: 0;
     padding: 0;
   }
 
-  header .content-grid > * {
+  .section-call-to-action .content-grid > * {
     grid-row: 1 / -1;
     grid-column: 1 / -1;
   }
 
-  .header-wrapper__left, .lead-text {
+  .cta-wrapper__left,
+  .lead-text {
     text-align: center;
     margin-inline: auto;
   }
 
-  .header-wrapper__right,
+  .cta-wrapper__right,
   .hero-wrapper {
     margin: 0;
     padding: 0;
@@ -111,7 +112,7 @@ header .content-grid {
     position: relative;
   }
 
-  .header-hero {
+  .cta-hero {
     max-width: var(--breakpoint-tablet-large);
     width: 100%;
     /* max-height: 400px; */

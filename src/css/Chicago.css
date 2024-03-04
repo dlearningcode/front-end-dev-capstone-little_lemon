@@ -77,10 +77,11 @@
 
   .chicago-pics {
     position: static;
-    justify-content: start;
+    justify-content: flex-start;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    gap: var(--spacing);
   }
 
   .chicago-pic-1 {

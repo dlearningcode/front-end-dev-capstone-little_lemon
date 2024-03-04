@@ -1,22 +1,22 @@
 import "../css/CallToAction.css";
-import headerHero from "../assets/images/headerhero.png";
+import ctaHero from "../assets/images/headerhero.png";
 import { Link } from "react-router-dom";
 
 export default function CallToAction() {
   return (
-    <header>
+    <section className="section-call-to-action">
       <div className="wrapper">
         <div className="content-grid">
-          <div className="header-wrapper__right">
+          <div className="cta-wrapper__right">
             <div className="hero-wrapper">
               <img
-                src={headerHero}
+                src={ctaHero}
                 alt="Little Lemon Restaurant food"
-                className="header-hero"
+                className="cta-hero"
               />
             </div>
           </div>
-          <div className="header-wrapper__left">
+          <div className="cta-wrapper__left">
             <h1 className="text-primary-2">Little Lemon</h1>
             <h2>Chicago</h2>
             <p className="lead-text">
@@ -29,6 +29,6 @@ export default function CallToAction() {
           </div>
         </div>
       </div>
-    </header>
+    </section>
   );
 }
