@@ -34,7 +34,8 @@
 .testimonial__profile {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
+  gap: var(--padding-small);
   margin-bottom: var(--padding-small);
 }
 
@@ -50,4 +51,11 @@
 
 .testimonial:hover {
   aspect-ratio: auto;
+}
+
+@media (max-width: 429px) {
+  .testimonial {
+    width: 60%;
+    margin-inline: auto;
+  }
 }
