@@ -1,84 +1,41 @@
-import { Link } from "react-router-dom";
 import "../css/Test.css";
-import greekSalad from "../assets/images/greek_salad.jpg";
-import bruschetta from "../assets/images/bruschetta.jpg";
-import lemonDessert from "../assets/images/lemon_dessert.jpg";
-import deliveryBike from "../assets/images/delivery_bike.svg";
+import React, { useState } from "react";
 
 export default function Test() {
+  const [value, setValue] = useState("");
+  const [submitted, setSubmitted] = useState("");
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(value);
+    setSubmitted(value);
+    setValue("");
+  };
+
   return (
-    <section className="section-test">
-      <div className="wrapper">
-        <div class="title-button">
-          <h2 className="text-primary-2">This Week's test</h2>
-          <Link to="/menu" className="button button-primary-2">
-            Online Menu
-          </Link>
-        </div>
-        <div className="test-wrapper">
-          <div className="test-grid">
-            <div className="special">
-              <img src={greekSalad} alt="Greek Salad" />
-              <div className="special__text">
-                <div className="special__headline">
-                  <h4>Greek Salad</h4>
-                  <p>$12.99</p>
-                </div>
-                <div class="special__description">
-                  <p>
-                    The famous greek salad of crispy lettuce, peppers, olives
-                    and our Chicago style feta cheese, garnished with crunchy
-                    garlic and rosemary croutons.
-                  </p>
-                </div>
-                <div className="special__delivery">
-                  <p>Order a delivery</p>
-                  <img src={deliveryBike} alt="Delivery Bike" />
-                </div>
-              </div>
-            </div>
-            <div className="special">
-              <img src={bruschetta} alt="Bruschetta" />
-              <div className="special__text">
-                <div className="special__headline">
-                  <h4>Bruschetta</h4>
-                  <p>$9.99</p>
-                </div>
-                <div class="special__description">
-                  <p>
-                    A classic Italian starter, our bruschetta is made with fresh
-                    tomatoes, basil, garlic and olive oil on toasted ciabatta
-                    bread.
-                  </p>
-                </div>
-                <div className="special__delivery">
-                  <p>Order a delivery</p>
-                  <img src={deliveryBike} alt="Delivery Bike" />
-                </div>
-              </div>
-            </div>
-            <div className="special">
-              <img src={lemonDessert} alt="Lemon Dessert" />
-              <div className="special__text">
-                <div className="special__headline">
-                  <h4>Lemon Dessert</h4>
-                  <p>$6.99</p>
-                </div>
-                <div class="special__description">
-                  <p>
-                    A refreshing dessert made with fresh lemons, our lemon
-                    dessert is the perfect way to end a meal at Little Lemon.
-                  </p>
-                </div>
-                <div className="special__delivery">
-                  <p>Order a delivery</p>
-                  <img src={deliveryBike} alt="Delivery Bike" />
-                </div>
-              </div>
-            </div>
+    <div className="text-wrapper">
+      <form onSubmit={submitHandler}>
+        <fieldset>
+          <div className="field">
+            <label htmlFor="input">
+              Input
+              <input
+                id="input"
+                value={value}
+                onChange={handleChange}
+                type="text"
+              />
+            </label>
           </div>
-        </div>
-      </div>
-    </section>
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+
+      <h3>You typed: {submitted}</h3>
+    </div>
   );
 }

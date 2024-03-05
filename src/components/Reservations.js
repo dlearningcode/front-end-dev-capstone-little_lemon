@@ -1,4 +1,5 @@
 import "../css/Reservations.css";
+import ReservationForm from "./ReservationForm";
 
 export default function Reservations() {
   return (
@@ -7,6 +8,7 @@ export default function Reservations() {
       <p>
         We are currently not accepting reservations. Please check back later.
       </p>
+      <ReservationForm />
     </div>
   );
 }
