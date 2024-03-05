@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 
-export default function ReservationForm() {
+export default function ReservationForm({ availableTimes, setAvailableTimes }) {
   const [formData, setFormData] = useState({
     date: "",
     time: "",
     guests: "",
     occasion: "",
   });
-
-  const [availableTimes, setAvailableTimes] = useState([
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-  ]);
 
   const handleChange = (e) => {
     setFormData({
@@ -61,7 +52,7 @@ export default function ReservationForm() {
             onChange={handleChange}
             type="time"
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Select
             </option>
             {availableTimes.map((time, index) => {
@@ -94,7 +85,7 @@ export default function ReservationForm() {
             value={formData.occasion}
             onChange={handleChange}
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Select
             </option>
             <option value="birthday">Birthday</option>

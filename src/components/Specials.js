@@ -9,7 +9,7 @@ export default function Specials() {
   return (
     <section className="section-specials">
       <div className="wrapper">
-        <div class="title-button">
+        <div className="title-button">
           <h2 className="text-primary-2">This Week's Specials</h2>
           <Link to="/menu" className="button button-primary-2">
             Online Menu
@@ -24,7 +24,7 @@ export default function Specials() {
                   <h4>Greek Salad</h4>
                   <p>$12.99</p>
                 </div>
-                <div class="special__description">
+                <div className="special__description">
                   <p>
                     The famous greek salad of crispy lettuce, peppers, olives
                     and our Chicago style feta cheese, garnished with crunchy
@@ -44,7 +44,7 @@ export default function Specials() {
                   <h4>Bruschetta</h4>
                   <p>$9.99</p>
                 </div>
-                <div class="special__description">
+                <div className="special__description">
                   <p>
                     A classic Italian starter, our bruschetta is made with fresh
                     tomatoes, basil, garlic and olive oil on toasted ciabatta
@@ -64,7 +64,7 @@ export default function Specials() {
                   <h4>Lemon Dessert</h4>
                   <p>$6.99</p>
                 </div>
-                <div class="special__description">
+                <div className="special__description">
                   <p>
                     A refreshing dessert made with fresh lemons, our lemon
                     dessert is the perfect way to end a meal at Little Lemon.
