@@ -1,5 +1,5 @@
 import "../css/Main.css";
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import {Routes, Route} from "react-router-dom";
 import Homepage from "./Homepage";
 import About from "./About";
@@ -12,7 +12,33 @@ import Test from "./Test";
 
 
 export default function Main() {
-  const [availableTimes, setAvailableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]);
+  const updateTimes = (state, action) => {
+    switch (action.type) {
+      case "dateChange":
+        // For now, return the same times regardless of date
+        return state;
+      default:
+        throw new Error("Invalid action type");
+    }
+  }
+
+  const initializeTimes = () => [
+    "17:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00",
+    "22:00",
+  ];
+
+  // Initialize availableTimes with the times we are open
+  // and a dispatch function to update the available times
+  // based on the date selected by the user
+  // The dispatch function will be passed to the ReservationForm component
+  // as a prop
+  // The dispatch function will be called with an action object
+  // that has a type property and a date property that will be sent to the reducer function updateTimes
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
   return (
     <main>
@@ -25,7 +51,7 @@ export default function Main() {
           element={
             <Reservations
               availableTimes={availableTimes}
-              setAvailableTimes={setAvailableTimes}
+              dispatch={dispatch}
             />
           }
         />

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-export default function ReservationForm({ availableTimes, setAvailableTimes }) {
+export default function ReservationForm({ availableTimes, dispatch }) {
   const [formData, setFormData] = useState({
-    date: "",
-    time: "",
+    resDate: "",
+    resTime: "",
     guests: "",
     occasion: "",
   });
@@ -13,6 +13,10 @@ export default function ReservationForm({ availableTimes, setAvailableTimes }) {
       ...formData,
       [e.target.name]: e.target.value,
     });
+
+    if (e.target.name === "resDate") {
+      dispatch({type: "dateChange", date: e.target.value});
+    }
   };
 
   const isFormValid = () => {
@@ -23,8 +27,8 @@ export default function ReservationForm({ availableTimes, setAvailableTimes }) {
     e.preventDefault();
     console.log(formData);
     setFormData({
-      date: "",
-      time: "",
+      resDate: "",
+      resTime: "",
       guests: "1",
       occasion: "",
     });
@@ -34,21 +38,21 @@ export default function ReservationForm({ availableTimes, setAvailableTimes }) {
     <form onSubmit={handleSubmit}>
       <fieldset>
         <div className="field">
-          <label htmlFor="res-date">Choose date</label>
+          <label htmlFor="resDate">Choose date</label>
           <input
-            id="res-date"
-            name="date"
-            value={formData.date}
+            id="resDate"
+            name="resDate"
+            value={formData.resDate}
             onChange={handleChange}
             type="date"
           />
         </div>
         <div className="field">
-          <label htmlFor="res-time">Choose time</label>
+          <label htmlFor="resTime">Choose time</label>
           <select
-            id="res-time"
-            name="time"
-            value={formData.time}
+            id="resTime"
+            name="resTime"
+            value={formData.resTime}
             onChange={handleChange}
             type="time"
           >
