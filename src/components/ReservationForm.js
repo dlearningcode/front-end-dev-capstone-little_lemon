@@ -15,7 +15,7 @@ export default function ReservationForm({ availableTimes, dispatch }) {
     });
 
     if (e.target.name === "reservationDate") {
-      dispatch({ type: "dateChange", date: e.target.value });
+      dispatch({ type: "DATE_CHANGE", date: e.target.value });
     }
   };
 

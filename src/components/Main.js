@@ -1,6 +1,6 @@
 import "../css/Main.css";
 import React, { useState, useReducer } from "react";
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Homepage from "./Homepage";
 import About from "./About";
 import Menu from "./Menu";
@@ -9,18 +9,16 @@ import OrderOnline from "./OrderOnline";
 import Login from "./Login";
 import Test from "./Test";
 
-
-
 export default function Main() {
   const updateTimes = (state, action) => {
     switch (action.type) {
-      case "dateChange":
+      case "DATE_CHANGE":
         // For now, return the same times regardless of date
         return state;
       default:
         throw new Error("Invalid action type");
     }
-  }
+  };
 
   const initializeTimes = () => [
     "17:00",
@@ -49,10 +47,7 @@ export default function Main() {
         <Route
           path="/reservations"
           element={
-            <Reservations
-              availableTimes={availableTimes}
-              dispatch={dispatch}
-            />
+            <Reservations availableTimes={availableTimes} dispatch={dispatch} />
           }
         />
         <Route path="/order-online" element={<OrderOnline />} />
