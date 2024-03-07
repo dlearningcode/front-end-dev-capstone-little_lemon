@@ -7,10 +7,15 @@ import deliveryBike from "../assets/images/delivery_bike.svg";
 
 export default function Specials() {
   return (
-    <section className="section-specials">
+    <section
+      aria-labelledby="this-weeks-specials-section"
+      className="section-specials"
+    >
       <div className="wrapper">
         <div className="title-button">
-          <h2 className="text-primary-2">This Week's Specials</h2>
+          <h2 id="this-weeks-specials-section" className="text-primary-2">
+            This Week's Specials
+          </h2>
           <Link to="/menu" className="button button-primary-2">
             Online Menu
           </Link>

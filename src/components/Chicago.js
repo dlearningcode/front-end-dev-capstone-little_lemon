@@ -4,7 +4,10 @@ import marioAdrianB from "../assets/images/mario-adrian-b.jpg";
 
 export default function Chicago() {
   return (
-    <section className="section-chicago">
+    <section
+      aria-label="about-little-lemon-chicago-section"
+      className="section-chicago"
+    >
       <div className="wrapper">
         <div className="chicago-grid">
           <div className="chicago-text">

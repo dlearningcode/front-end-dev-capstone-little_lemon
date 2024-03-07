@@ -7,9 +7,14 @@ import john from "../assets/images/john.jpeg";
 
 export default function Testimonials() {
   return (
-    <section className="section-testimonials">
+    <section
+      aria-labelledby="testimonials-section"
+      className="section-testimonials"
+    >
       <div className="wrapper">
-        <h2 className="text-primary-2">Testimonials</h2>
+        <h2 id="testimonials-section" className="text-primary-2">
+          Testimonials
+        </h2>
         <div className="testimonials-grid">
           <div className="testimonial">
             <div className="testimonial__stars">
@@ -48,7 +53,8 @@ export default function Testimonials() {
             </div>
             <div className="testimonial__text">
               <p>
-                "Mario and Adrian built a place that feels like home, with amazing food."
+                "Mario and Adrian built a place that feels like home, with
+                amazing food."
               </p>
             </div>
           </div>

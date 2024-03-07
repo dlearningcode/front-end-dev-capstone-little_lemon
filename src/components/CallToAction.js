@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 
 export default function CallToAction() {
   return (
-    <section className="section-call-to-action">
+    <section
+      aria-labelledby="call-to-action-section"
+      className="section-call-to-action"
+    >
       <div className="wrapper">
         <div className="content-grid">
           <div className="cta-wrapper__right">
@@ -17,7 +20,9 @@ export default function CallToAction() {
             </div>
           </div>
           <div className="cta-wrapper__left">
-            <h1 className="text-primary-2">Little Lemon</h1>
+            <h1 id="call-to-action-section" className="text-primary-2">
+              Little Lemon
+            </h1>
             <h2>Chicago</h2>
             <p className="lead-text">
               We are a family owned Mediterranean restaurant, focused on

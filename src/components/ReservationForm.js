@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 export default function ReservationForm({ availableTimes, dispatch }) {
   const [formData, setFormData] = useState({
-    resDate: "",
-    resTime: "",
-    guests: "",
+    reservationDate: "",
+    reservationTime: "",
+    guestCount: "",
     occasion: "",
   });
 
@@ -14,8 +14,8 @@ export default function ReservationForm({ availableTimes, dispatch }) {
       [e.target.name]: e.target.value,
     });
 
-    if (e.target.name === "resDate") {
-      dispatch({type: "dateChange", date: e.target.value});
+    if (e.target.name === "reservationDate") {
+      dispatch({ type: "dateChange", date: e.target.value });
     }
   };
 
@@ -27,9 +27,9 @@ export default function ReservationForm({ availableTimes, dispatch }) {
     e.preventDefault();
     console.log(formData);
     setFormData({
-      resDate: "",
-      resTime: "",
-      guests: "1",
+      reservationDate: "",
+      reservationTime: "",
+      guestCount: "1",
       occasion: "",
     });
   };
@@ -38,21 +38,21 @@ export default function ReservationForm({ availableTimes, dispatch }) {
     <form onSubmit={handleSubmit}>
       <fieldset>
         <div className="field">
-          <label htmlFor="resDate">Choose date</label>
+          <label htmlFor="reservationDate">Choose date</label>
           <input
-            id="resDate"
-            name="resDate"
-            value={formData.resDate}
+            id="reservationDate"
+            name="reservationDate"
+            value={formData.reservationDate}
             onChange={handleChange}
             type="date"
           />
         </div>
         <div className="field">
-          <label htmlFor="resTime">Choose time</label>
+          <label htmlFor="reservationTime">Choose time</label>
           <select
-            id="resTime"
-            name="resTime"
-            value={formData.resTime}
+            id="reservationTime"
+            name="reservationTime"
+            value={formData.reservationTime}
             onChange={handleChange}
             type="time"
           >
@@ -69,14 +69,14 @@ export default function ReservationForm({ availableTimes, dispatch }) {
           </select>
         </div>
         <div className="field">
-          <label htmlFor="guests">Number of guests</label>
+          <label htmlFor="guestCount">Number of guests</label>
           <input
-            id="guests"
-            name="guests"
+            id="guestCount"
+            name="guestCount"
             min="1"
             max="10"
             placeholder="1"
-            value={formData.guests}
+            value={formData.guestCount}
             onChange={handleChange}
             type="number"
           />
