@@ -1,5 +1,5 @@
 import "../css/Main.css";
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./Homepage";
 import About from "./About";
@@ -14,6 +14,7 @@ export default function Main() {
     switch (action.type) {
       case "DATE_CHANGE":
         // For now, return the same times regardless of date
+        //
         return state;
       default:
         throw new Error("Invalid action type");

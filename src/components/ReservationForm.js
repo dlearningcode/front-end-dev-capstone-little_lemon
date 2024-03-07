@@ -14,6 +14,8 @@ export default function ReservationForm({ availableTimes, dispatch }) {
       [e.target.name]: e.target.value,
     });
 
+    // If the name of the input field is reservationDate,
+    // dispatch an action object to the reducer function
     if (e.target.name === "reservationDate") {
       dispatch({ type: "DATE_CHANGE", date: e.target.value });
     }
@@ -45,6 +47,7 @@ export default function ReservationForm({ availableTimes, dispatch }) {
             value={formData.reservationDate}
             onChange={handleChange}
             type="date"
+            aria-label="Choose date for reservation"
           />
         </div>
         <div className="field">
@@ -55,6 +58,7 @@ export default function ReservationForm({ availableTimes, dispatch }) {
             value={formData.reservationTime}
             onChange={handleChange}
             type="time"
+            aria-label="Choose time for reservation"
           >
             <option value="" disabled>
               Select
@@ -79,6 +83,7 @@ export default function ReservationForm({ availableTimes, dispatch }) {
             value={formData.guestCount}
             onChange={handleChange}
             type="number"
+            aria-label="Enter or select number of guests"
           />
         </div>
         <div className="field">
@@ -88,6 +93,7 @@ export default function ReservationForm({ availableTimes, dispatch }) {
             name="occasion"
             value={formData.occasion}
             onChange={handleChange}
+            aria-label="Choose the occasion for reservation"
           >
             <option value="" disabled>
               Select
