@@ -17,7 +17,7 @@ export default function ReservationForm({ availableTimes, dispatch }) {
     // If the name of the input field is reservationDate,
     // dispatch an action object to the reducer function
     if (e.target.name === "reservationDate") {
-      dispatch({ type: "DATE_CHANGE", date: e.target.value });
+      dispatch({ type: "DATE_CHANGE", payload: e.target.value });
     }
   };
 

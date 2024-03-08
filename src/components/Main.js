@@ -9,27 +9,27 @@ import OrderOnline from "./OrderOnline";
 import Login from "./Login";
 import Test from "./Test";
 
+export const updateTimes = (state, action) => {
+  switch (action.type) {
+    case "DATE_CHANGE":
+      // For now, return the same times regardless of date
+      //
+      return state;
+    default:
+      throw new Error("Invalid action type");
+  }
+};
+
+export const initializeTimes = () => [
+  "17:00",
+  "18:00",
+  "19:00",
+  "20:00",
+  "21:00",
+  "22:00",
+];
+
 export default function Main() {
-  const updateTimes = (state, action) => {
-    switch (action.type) {
-      case "DATE_CHANGE":
-        // For now, return the same times regardless of date
-        //
-        return state;
-      default:
-        throw new Error("Invalid action type");
-    }
-  };
-
-  const initializeTimes = () => [
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-  ];
-
   // Initialize availableTimes with the times we are open
   // and a dispatch function to update the available times
   // based on the date selected by the user
