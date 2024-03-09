@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ReservationForm({ availableTimes, dispatch }) {
+export default function ReservationForm({ availableTimes, fetchTimes, today }) {
   const [formData, setFormData] = useState({
     reservationDate: "",
     reservationTime: "",
@@ -17,7 +17,7 @@ export default function ReservationForm({ availableTimes, dispatch }) {
     // If the name of the input field is reservationDate,
     // dispatch an action object to the reducer function
     if (e.target.name === "reservationDate") {
-      dispatch({ type: "DATE_CHANGE", payload: e.target.value });
+      fetchTimes(e.target.value);
     }
   };
 

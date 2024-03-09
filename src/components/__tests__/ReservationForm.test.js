@@ -2,32 +2,31 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import ReservationForm from "../ReservationForm";
 
+let fetchTimes;
+beforeEach(() => {
+  fetchTimes = jest.fn();
+});
+
 test("dispatches action with correct payload when reservationDate changes", () => {
-  const dispatch = jest.fn();
+  const fetchTimes = jest.fn();
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
   render(
-    <ReservationForm availableTimes={availableTimes} dispatch={dispatch} />
+    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />
   );
 
   const dateInput = screen.getByLabelText("Choose date for reservation");
   fireEvent.change(dateInput, { target: { value: "2024-03-31" } });
 
-  expect(dispatch).toHaveBeenCalledWith({
-    type: "DATE_CHANGE",
-    payload: "2024-03-31",
-  });
+  expect(fetchTimes).toHaveBeenCalledWith("2024-03-31");
 });
 
 test("Make Your Reservation button functions with all fields entered", () => {
-  const dispatch = jest.fn();
+  const fetchTimes = jest.fn();
   // Mock console.log
   const consoleSpy = jest.spyOn(console, "log");
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
   render(
-    <ReservationForm
-      availableTimes={availableTimes}
-      dispatch={dispatch}
-    />
+    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />
   );
 
   const dateInput = screen.getByLabelText("Choose date for reservation");
@@ -55,17 +54,14 @@ test("Make Your Reservation button functions with all fields entered", () => {
   });
 
   // Restore console.log
-  consoleSpy.mockRestore()
+  consoleSpy.mockRestore();
 });
 
 test("Make Your Reservation button disabled without all fields entered", () => {
-  const dispatch = jest.fn();
+  const fetchTimes = jest.fn();
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
   render(
-    <ReservationForm
-      availableTimes={availableTimes}
-      dispatch={dispatch}
-    />
+    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />
   );
 
   const dateInput = screen.getByLabelText("Choose date for reservation");
