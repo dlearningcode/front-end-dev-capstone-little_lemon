@@ -8,7 +8,6 @@ beforeEach(() => {
 });
 
 test("dispatches action with correct payload when reservationDate changes", () => {
-  const fetchTimes = jest.fn();
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
   render(
     <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />
@@ -21,7 +20,6 @@ test("dispatches action with correct payload when reservationDate changes", () =
 });
 
 test("Make Your Reservation button functions with all fields entered", () => {
-  const fetchTimes = jest.fn();
   // Mock console.log
   const consoleSpy = jest.spyOn(console, "log");
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
@@ -58,7 +56,6 @@ test("Make Your Reservation button functions with all fields entered", () => {
 });
 
 test("Make Your Reservation button disabled without all fields entered", () => {
-  const fetchTimes = jest.fn();
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
   render(
     <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />

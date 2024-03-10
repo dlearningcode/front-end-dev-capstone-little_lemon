@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../css/ReservationForm.css";
 
 export default function ReservationForm({ availableTimes, fetchTimes, today }) {
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ export default function ReservationForm({ availableTimes, fetchTimes, today }) {
     setFormData({
       reservationDate: "",
       reservationTime: "",
-      guestCount: "1",
+      guestCount: "",
       occasion: "",
     });
   };

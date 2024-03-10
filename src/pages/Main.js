@@ -1,13 +1,14 @@
 import "../css/Main.css";
 import React, { useReducer, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Homepage from "./Homepage";
-import About from "./About";
-import Menu from "./Menu";
-import Reservations from "./Reservations";
-import OrderOnline from "./OrderOnline";
-import Login from "./Login";
-import Test from "./Test";
+import Homepage from "./Homepage.js";
+import About from "./About.js";
+import Menu from "./Menu.js";
+import Reservations from "./Reservations.js";
+import OrderOnline from "./OrderOnline.js";
+import Login from "./Login.js";
+import ConfirmedBooking from "./ConfirmedBooking.js";
+import Test from "./Test.js";
 import { fetchAPI } from "../scripts/masterapi.js";
 
 export const updateTimes = (state, action) => {
@@ -37,11 +38,11 @@ export default function Main() {
   };
 
   useEffect(() => {
-  const initializeTimes = async () => {
-    const times = await fetchAPI(today);
-    setInitialTimes(times);
-    dispatch({ type: "DATE_CHANGE", payload: times });
-  };
+    const initializeTimes = async () => {
+      const times = await fetchAPI(today);
+      setInitialTimes(times);
+      dispatch({ type: "DATE_CHANGE", payload: times });
+    };
 
     initializeTimes();
   }, []);
@@ -73,6 +74,7 @@ export default function Main() {
         />
         <Route path="/order-online" element={<OrderOnline />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/confirmed-booking" element={<ConfirmedBooking />} />
         <Route path="/test" element={<Test />} />
         <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>

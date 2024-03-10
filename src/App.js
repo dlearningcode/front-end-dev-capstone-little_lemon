@@ -2,7 +2,7 @@ import "./css/App.css";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Nav from "./components/Nav";
-import Main from "./components/Main";
+import Main from "./pages/Main";
 import Footer from "./components/Footer";
 
 function App() {
