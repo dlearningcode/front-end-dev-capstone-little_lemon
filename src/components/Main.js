@@ -31,18 +31,18 @@ const today = new Date().toISOString().split("T")[0];
 export default function Main() {
   const [initialTimes, setInitialTimes] = useState([]);
 
-  const initializeTimes = () => {
-    const times = fetchAPI(today);
-    setInitialTimes(times);
-    dispatch({ type: "DATE_CHANGE", payload: times });
-  };
-
-  const fetchTimes = (date) => {
-    const times = fetchAPI(date);
+  const fetchTimes = async (date) => {
+    const times = await fetchAPI(date);
     dispatch({ type: "DATE_CHANGE", payload: times });
   };
 
   useEffect(() => {
+  const initializeTimes = async () => {
+    const times = await fetchAPI(today);
+    setInitialTimes(times);
+    dispatch({ type: "DATE_CHANGE", payload: times });
+  };
+
     initializeTimes();
   }, []);
 
