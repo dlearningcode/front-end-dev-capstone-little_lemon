@@ -12,7 +12,6 @@ export const fetchAPI = (reservationDate) => {
 
   // Store the generated times in timesByDate so we can reuse them if the same date is selected again
   timesByDate[reservationDate] = times;
-  console.log("Date: ", reservationDate, "Times: ", times);
 
   return times;
 };

@@ -28,7 +28,6 @@ export default function ReservationForm({ availableTimes, fetchTimes, submitForm
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     // Call the submitForm function and pass the form data as an argument
     // to submit the form data to the API
     submitForm(formData);

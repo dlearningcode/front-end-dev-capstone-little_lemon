@@ -32,6 +32,7 @@ const today = new Date().toISOString().split("T")[0];
 export default function Main() {
   const [initialTimes, setInitialTimes] = useState([]);
   const navigate = useNavigate();
+  const [reservationInfo, setReservationInfo] = useState({});
 
   const fetchTimes = async (date) => {
     const times = await fetchAPI(date);
@@ -51,6 +52,7 @@ export default function Main() {
   const submitForm = async (formData) => {
     const submittedForm = await submitAPI(formData);
     if (submittedForm) {
+      setReservationInfo(formData);
       navigate("/confirmed-booking");
     }
   };
@@ -83,7 +85,10 @@ export default function Main() {
         />
         <Route path="/order-online" element={<OrderOnline />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/confirmed-booking" element={<ConfirmedBooking />} />
+        <Route
+          path="/confirmed-booking"
+          element={<ConfirmedBooking reservationInfo={reservationInfo} />}
+        />
         <Route path="/test" element={<Test />} />
         <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>

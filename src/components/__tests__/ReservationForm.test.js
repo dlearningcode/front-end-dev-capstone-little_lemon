@@ -45,22 +45,12 @@ test("Make Your Reservation button functions with all fields entered", () => {
 
   const submitButton = screen.getByText("Make Your Reservation");
   fireEvent.click(submitButton);
-
-  expect(consoleSpy).toHaveBeenCalledWith({
-    reservationDate: "2024-03-31",
-    reservationTime: "18:00",
-    guestCount: "4",
-    occasion: "birthday",
-  });
   expect(submitForm).toHaveBeenCalledWith({
     reservationDate: "2024-03-31",
     reservationTime: "18:00",
     guestCount: "4",
     occasion: "birthday",
   });
-
-  // Restore console.log
-  consoleSpy.mockRestore();
 });
 
 test("Make Your Reservation button disabled without all fields entered", () => {
