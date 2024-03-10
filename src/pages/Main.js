@@ -1,6 +1,6 @@
 import "../css/Main.css";
 import React, { useReducer, useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Homepage from "./Homepage.js";
 import About from "./About.js";
 import Menu from "./Menu.js";
@@ -9,7 +9,7 @@ import OrderOnline from "./OrderOnline.js";
 import Login from "./Login.js";
 import ConfirmedBooking from "./ConfirmedBooking.js";
 import Test from "./Test.js";
-import { fetchAPI } from "../scripts/masterapi.js";
+import { fetchAPI, submitAPI } from "../scripts/masterapi.js";
 
 export const updateTimes = (state, action) => {
   switch (action.type) {
@@ -31,6 +31,7 @@ const today = new Date().toISOString().split("T")[0];
 
 export default function Main() {
   const [initialTimes, setInitialTimes] = useState([]);
+  const navigate = useNavigate();
 
   const fetchTimes = async (date) => {
     const times = await fetchAPI(date);
@@ -47,13 +48,21 @@ export default function Main() {
     initializeTimes();
   }, []);
 
+  const submitForm = async (formData) => {
+    const submittedForm = await submitAPI(formData);
+    if (submittedForm) {
+      navigate("/confirmed-booking");
+    }
+  };
+
   // Initialize availableTimes with the times we are open
   // and a dispatch function to update the available times
   // based on the date selected by the user
   // The dispatch function will be passed to the ReservationForm component
   // as a prop
   // The dispatch function will be called with an action object
-  // that has a type property and a date property that will be sent to the reducer function updateTimes
+  // that has a type property and a date property that will be sent to the
+  // reducer function updateTimes
   const [availableTimes, dispatch] = useReducer(updateTimes, initialTimes);
 
   return (
@@ -68,7 +77,7 @@ export default function Main() {
             <Reservations
               availableTimes={availableTimes}
               fetchTimes={fetchTimes}
-              today={today}
+              submitForm={submitForm}
             />
           }
         />

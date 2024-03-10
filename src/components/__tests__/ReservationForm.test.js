@@ -3,14 +3,16 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import ReservationForm from "../ReservationForm";
 
 let fetchTimes;
+let submitForm;
 beforeEach(() => {
   fetchTimes = jest.fn();
+  submitForm = jest.fn();
 });
 
 test("dispatches action with correct payload when reservationDate changes", () => {
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
   render(
-    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />
+    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} submitForm={submitForm} />
   );
 
   const dateInput = screen.getByLabelText("Choose date for reservation");
@@ -24,7 +26,7 @@ test("Make Your Reservation button functions with all fields entered", () => {
   const consoleSpy = jest.spyOn(console, "log");
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
   render(
-    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />
+    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} submitForm={submitForm} />
   );
 
   const dateInput = screen.getByLabelText("Choose date for reservation");
@@ -45,6 +47,12 @@ test("Make Your Reservation button functions with all fields entered", () => {
   fireEvent.click(submitButton);
 
   expect(consoleSpy).toHaveBeenCalledWith({
+    reservationDate: "2024-03-31",
+    reservationTime: "18:00",
+    guestCount: "4",
+    occasion: "birthday",
+  });
+  expect(submitForm).toHaveBeenCalledWith({
     reservationDate: "2024-03-31",
     reservationTime: "18:00",
     guestCount: "4",
