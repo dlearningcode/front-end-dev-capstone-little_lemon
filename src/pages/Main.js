@@ -14,19 +14,21 @@ import { fetchAPI, submitAPI } from "../scripts/masterapi.js";
 // Create an object to hold today's date in format YYYY-MM-DD
 const today = new Date().toISOString().split("T")[0];
 
-// use useEffect to call the fetchAPI function when the component is mounted
-// to get the available times for the selected date
-
 export default function Main() {
   const [initialTimes, setInitialTimes] = useState([]);
   const navigate = useNavigate();
   const [reservationInfo, setReservationInfo] = useState({});
 
+  // Since fetchAPI is an async function, we need to use the await keyword
+  // to wait for the response to come back and then send it to the reducer function
+  // updateTimes as reducer functions are synchronous
   const fetchTimes = async (date) => {
     const times = await fetchAPI(date);
     dispatch({ type: "DATE_CHANGE", payload: times });
   };
 
+  // use useEffect to call the fetchAPI function when the component is mounted
+  // to get the available times for today's date
   useEffect(() => {
     const initializeTimes = async () => {
       const times = await fetchAPI(today);
@@ -40,9 +42,6 @@ export default function Main() {
   const updateTimes = (state, action) => {
     switch (action.type) {
       case "DATE_CHANGE":
-        // use the date provided in the action object to call the fetchAPI function
-        // to get the available times for the selected date
-        // return the available times
         return action.payload;
       default:
         throw new Error("Invalid action type");
@@ -58,7 +57,7 @@ export default function Main() {
   };
 
   // Initialize availableTimes with the times we are open
-  // and a dispatch function to update the available times
+  // and a reducer function to update the available times
   // based on the date selected by the user
   // The dispatch function will be passed to the ReservationForm component
   // as a prop

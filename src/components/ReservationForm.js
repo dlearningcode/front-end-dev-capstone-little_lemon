@@ -17,7 +17,7 @@ export default function ReservationForm({ availableTimes, fetchTimes, submitForm
     });
 
     // If the name of the input field is reservationDate,
-    // dispatch an action object to the reducer function
+    // runc fetchTimes in Main component to get the available times
     if (e.target.name === "reservationDate") {
       fetchTimes(e.target.value);
     }
