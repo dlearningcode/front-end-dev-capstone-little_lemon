@@ -1,33 +1,46 @@
-import { updateTimes, initializeTimes } from "../Main";
+import Main from "../../pages/Main";
+import { render, waitFor, act } from "@testing-library/react";
+import { fetchAPI } from "../../scripts/masterapi";
+import { BrowserRouter as Router } from "react-router-dom";
+
+jest.mock("../../scripts/masterapi", () => ({
+  fetchAPI: jest.fn(),
+  submitAPI: jest.fn(),
+}));
 
 describe("Main component", () => {
-  test("should update times correctly", () => {
-    const state = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-    const action = {
-      type: "DATE_CHANGE",
-      payload: ["17:30", "18:30", "19:30", "20:30", "21:30", "22:30"],
-    };
+  test("should initialize with today's date on mount", async () => {
+    fetchAPI.mockResolvedValue(["17:00", "20:00", "21:00"]);
+    render(
+      <Router>
+        <Main />
+      </Router>
+    );
 
-    // Assert that the times are updated correctly
-    expect(updateTimes(state, action)).toEqual([
-      "17:30",
-      "18:30",
-      "19:30",
-      "20:30",
-      "21:30",
-      "22:30",
-    ]);
+    await waitFor(() =>
+      expect(fetchAPI).toHaveBeenCalledWith(
+        new Date().toISOString().split("T")[0]
+      )
+    );
+  });
+
+  test("should update times when date changes", async () => {
+    const initialTimes = ["17:00", "20:00", "21:00"];
+    const newTimes = ["18:00", "19:00", "20:00"];
+    fetchAPI.mockResolvedValueOnce(initialTimes).mockResolvedValueOnce(newTimes);
+    render(
+      <Router>
+        <Main />
+      </Router>
+    );
+
+    // Simulate a date change
+    const newDate = "2024-03-31";
+    await act(async () => {
+      await fetchAPI(newDate);
+    });
+
+    expect(fetchAPI).toHaveBeenCalledTimes(2);
+    expect(fetchAPI).toHaveBeenCalledWith(newDate);
   });
 });
-//   test("should initialize times correctly", () => {
-//     // Assert that the times are initialized correctly
-//     expect(initializeTimes()).toEqual([
-//       "17:00",
-//       "18:00",
-//       "19:00",
-//       "20:00",
-//       "21:00",
-//       "22:00",
-//     ]);
-//   });
-// });

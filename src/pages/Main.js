@@ -11,18 +11,6 @@ import ConfirmedBooking from "./ConfirmedBooking.js";
 import Test from "./Test.js";
 import { fetchAPI, submitAPI } from "../scripts/masterapi.js";
 
-export const updateTimes = (state, action) => {
-  switch (action.type) {
-    case "DATE_CHANGE":
-      // use the date provided in the action object to call the fetchAPI function
-      // to get the available times for the selected date
-      // return the available times
-      return action.payload;
-    default:
-      throw new Error("Invalid action type");
-  }
-};
-
 // Create an object to hold today's date in format YYYY-MM-DD
 const today = new Date().toISOString().split("T")[0];
 
@@ -48,6 +36,18 @@ export default function Main() {
 
     initializeTimes();
   }, []);
+
+  const updateTimes = (state, action) => {
+    switch (action.type) {
+      case "DATE_CHANGE":
+        // use the date provided in the action object to call the fetchAPI function
+        // to get the available times for the selected date
+        // return the available times
+        return action.payload;
+      default:
+        throw new Error("Invalid action type");
+    }
+  };
 
   const submitForm = async (formData) => {
     const submittedForm = await submitAPI(formData);

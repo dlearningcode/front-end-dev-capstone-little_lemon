@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/ReservationForm.css";
+import { removeTime } from "../scripts/masterapi.js";
 
 export default function ReservationForm({ availableTimes, fetchTimes, submitForm }) {
   const [formData, setFormData] = useState({
@@ -31,6 +32,7 @@ export default function ReservationForm({ availableTimes, fetchTimes, submitForm
     // Call the submitForm function and pass the form data as an argument
     // to submit the form data to the API
     submitForm(formData);
+    removeTime(formData.reservationDate, formData.reservationTime);
     setFormData({
       reservationDate: "",
       reservationTime: "",
