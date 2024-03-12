@@ -35,6 +35,44 @@ export default function ReservationForm({
     }
   };
 
+  const validateField = (name, value) => {
+    let fieldErrors = { ...formErrors };
+
+    switch (name) {
+      case "reservationDate":
+        const todayDate = new Date(today);
+        const selectedDate = new Date(value);
+        const isDateValid = selectedDate >= todayDate;
+        fieldErrors.reservationDate =
+          isDateValid || value === ""
+            ? ""
+            : "Please choose a date today or in the future";
+        break;
+      case "reservationTime":
+        fieldErrors.reservationTime = value
+          ? ""
+          : "Please choose an available time";
+        break;
+      case "guestCount":
+        fieldErrors.guestCount = value
+          ? ""
+          : "Please enter the number of guests";
+        break;
+      case "occasion":
+        fieldErrors.occasion = value ? "" : "Please choose an occasion";
+        break;
+      default:
+        break;
+    }
+
+    setFormErrors(fieldErrors);
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    validateField(name, value);
+  };
+
   const isFormValid = () => {
     const todayDate = new Date(today);
     const selectedDate = new Date(formData.reservationDate);
@@ -91,6 +129,7 @@ export default function ReservationForm({
             name="reservationDate"
             value={formData.reservationDate}
             onChange={handleChange}
+            onBlur={handleBlur}
             type="date"
             aria-label="Choose date for reservation"
             className={formErrors.reservationDate ? "error-border" : ""}
@@ -108,6 +147,7 @@ export default function ReservationForm({
             name="reservationTime"
             value={formData.reservationTime}
             onChange={handleChange}
+            onBlur={handleBlur}
             type="time"
             aria-label="Choose an available time for reservation"
             className={formErrors.reservationTime ? "error-border" : ""}
@@ -139,6 +179,7 @@ export default function ReservationForm({
             placeholder="1"
             value={formData.guestCount}
             onChange={handleChange}
+            onBlur={handleBlur}
             type="number"
             aria-label="Enter or select number of guests"
             className={formErrors.guestCount ? "error-border" : ""}
@@ -156,6 +197,7 @@ export default function ReservationForm({
             name="occasion"
             value={formData.occasion}
             onChange={handleChange}
+            onBlur={handleBlur}
             aria-label="Choose the occasion for reservation"
             className={formErrors.occasion ? "error-border" : ""}
           >
