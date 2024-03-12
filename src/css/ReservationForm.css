@@ -18,6 +18,10 @@
     margin-bottom: var(--spacing);
 }
 
+.reservation-form label span {
+    color: var(--secondary-1-warning);
+}
+
 .reservation-form input, 
 .reservation-form select {
     width: 100%;
@@ -36,7 +40,7 @@
 }
 
 .reservation-form .error {
-    color: red;
+    color: var(--secondary-1-warning);
     font-size: var(--fs-x-small);
     margin-top: 0;
     padding-top: 0;
@@ -44,6 +48,6 @@
 }
 
 .reservation-form .error-border {
-    border: 2px solid red;
+    border: 2px solid var(--secondary-1-warning);
     margin-bottom: 0;
 }

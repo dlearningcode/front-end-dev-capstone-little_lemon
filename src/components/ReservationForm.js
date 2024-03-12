@@ -54,9 +54,13 @@ export default function ReservationForm({
           : "Please choose an available time";
         break;
       case "guestCount":
-        fieldErrors.guestCount = value
-          ? ""
-          : "Please enter the number of guests";
+        fieldErrors.guestCount = !value
+          ? "Please enter the number of guests"
+          : parseInt(value) > 10
+          ? alert(
+              "Please call us at (217) 555-1234 to schedule an event for 11 to 50 guests"
+            )
+          : "";
         break;
       case "occasion":
         fieldErrors.occasion = value ? "" : "Please choose an occasion";
@@ -85,16 +89,18 @@ export default function ReservationForm({
       reservationTime: formData.reservationTime
         ? ""
         : "Please choose an available time",
-      guestCount: formData.guestCount
-        ? ""
-        : "Please enter the number of guests",
+      guestCount: (formData.guestCount = ""
+        ? "Please enter the number of guests"
+        : parseInt(formData.guestCount) > 10
+        ? "Please call us at (217) 555-1234 to schedule an event for 11 to 50 guests"
+        : ""),
       occasion: formData.occasion ? "" : "Please choose an occasion",
     };
 
     setFormErrors(errors);
 
     return (
-      isDateValid && Object.values(formData).every((field) => field !== "")
+      isDateValid && parseInt(formData.guestCount) <= 10
     );
   };
 
@@ -133,6 +139,7 @@ export default function ReservationForm({
             type="date"
             aria-label="Choose date for reservation"
             className={formErrors.reservationDate ? "error-border" : ""}
+            required
           />
           {formErrors.reservationDate && (
             <div className="error">{formErrors.reservationDate}</div>
@@ -151,6 +158,7 @@ export default function ReservationForm({
             type="time"
             aria-label="Choose an available time for reservation"
             className={formErrors.reservationTime ? "error-border" : ""}
+            required
           >
             <option value="" disabled>
               Select
@@ -175,7 +183,8 @@ export default function ReservationForm({
             id="guestCount"
             name="guestCount"
             min="1"
-            max="10"
+            max="50"
+            step="1"
             placeholder="1"
             value={formData.guestCount}
             onChange={handleChange}
@@ -183,6 +192,7 @@ export default function ReservationForm({
             type="number"
             aria-label="Enter or select number of guests"
             className={formErrors.guestCount ? "error-border" : ""}
+            required
           />
           {formErrors.guestCount && (
             <div className="error">{formErrors.guestCount}</div>
@@ -200,14 +210,16 @@ export default function ReservationForm({
             onBlur={handleBlur}
             aria-label="Choose the occasion for reservation"
             className={formErrors.occasion ? "error-border" : ""}
+            required
           >
             <option value="" disabled>
               Select
             </option>
-            <option value="birthday">Birthday</option>
             <option value="anniversary">Anniversary</option>
+            <option value="birthday">Birthday</option>
             <option value="engagement">Engagement</option>
-            <option value="other">Other</option>
+            <option value="meal">Good Meal</option>
+            <option value="other">Other Celebration</option>
           </select>
           {formErrors.occasion && (
             <div className="error">{formErrors.occasion}</div>

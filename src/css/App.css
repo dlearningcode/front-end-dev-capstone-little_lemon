@@ -11,9 +11,9 @@
   --black: #000;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --transition-slow: all 0.5s ease;
   --transition-reg: all 0.3s ease;
   --transition-fast: all 0.1s ease;
-  --transition-slow: all 0.5s ease;
   --spacing: 0.25rem;
   --padding-x-small: 0.5rem;
   --padding-small: 0.75rem;
@@ -305,7 +305,7 @@ span,
 /* Error Messages */
 
 form .error {
-    color: red;
+    color: var(--secondary-1-warning);
     font-size: var(--fs-x-small);
     margin-top: 0;
     padding-top: 0;
@@ -313,7 +313,7 @@ form .error {
 }
 
 form .error-border {
-    border: 2px solid red;
+    border: 2px solid var(--secondary-1-warning);
     margin-bottom: 0;
 }
 
