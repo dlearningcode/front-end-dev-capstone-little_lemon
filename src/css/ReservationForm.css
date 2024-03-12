@@ -1,10 +1,49 @@
-form .error {
-    color: red;
-    font-size: 0.8em;
-    margin-top: 0;
-    margin-bottom: 0.2em;
+.reservation-form {
+    margin: 0 auto;
+    min-width: 10em;
+    max-width: 30em;
+    overflow: hidden;
+    padding: var(--padding-large) 0;
 }
 
-form .error-border {
+.reservation-form fieldset {
+    border: 1px solid var(--primary-1);
+    margin: 0;
+    padding: var(--padding-large);
+    /* border-radius: var(--radius-large); */
+}
+
+.reservation-form label {
+    display: block;
+    margin-bottom: var(--spacing);
+}
+
+.reservation-form input, 
+.reservation-form select {
+    width: 100%;
+    margin-bottom: var(--padding-large);
+    padding: var(--padding-med) var(--padding-small);
+    font-size: var(--fs-normal);
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-primary-med);
+    border: 1px solid var(--primary-1);
+    border-radius: var(--radius-large);
+}
+
+.reservation-form button {
+    display: block;
+    margin-inline: auto;
+}
+
+.reservation-form .error {
+    color: red;
+    font-size: var(--fs-x-small);
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: var(--padding-large);
+}
+
+.reservation-form .error-border {
     border: 2px solid red;
+    margin-bottom: 0;
 }

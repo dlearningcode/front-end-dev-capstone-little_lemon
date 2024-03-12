@@ -118,10 +118,10 @@ export default function ReservationForm({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="reservation-form">
       <fieldset>
         <div className="field">
-          <label htmlFor="reservationDate">
+          <label htmlFor="reservationDate" className="card-title">
             Choose date<span>*</span>
           </label>
           <input
@@ -139,7 +139,7 @@ export default function ReservationForm({
           )}
         </div>
         <div className="field">
-          <label htmlFor="reservationTime">
+          <label htmlFor="reservationTime" className="card-title">
             Choose an available time<span>*</span>
           </label>
           <select
@@ -168,7 +168,7 @@ export default function ReservationForm({
           )}
         </div>
         <div className="field">
-          <label htmlFor="guestCount">
+          <label htmlFor="guestCount" className="card-title">
             Number of guests<span>*</span>
           </label>
           <input
@@ -189,7 +189,7 @@ export default function ReservationForm({
           )}
         </div>
         <div className="field">
-          <label htmlFor="occasion">
+          <label htmlFor="occasion" className="card-title">
             What's the occasion?<span>*</span>
           </label>
           <select
@@ -213,7 +213,9 @@ export default function ReservationForm({
             <div className="error">{formErrors.occasion}</div>
           )}
         </div>
-        <button type="submit">Make Your Reservation</button>
+        <button type="submit" className="button button-primary-2">
+          Make Your Reservation
+        </button>
       </fieldset>
     </form>
   );

@@ -40,8 +40,9 @@
   --fw-primary-x-bold: 800;
   --fw-secondary-reg: 400;
   --fw-secondary-med: 500;
-  --fs-normal: 1em;
+  --fs-x-small: 0.75em;
   --fs-small: 0.875em;
+  --fs-normal: 1em;
   --fs-medium: 1.125em;
   --fs-large: 1.25em;
   --fs-subtitle: 2.5em;
@@ -293,3 +294,26 @@ span,
   justify-content: center;
   align-items: center;
 }
+
+.flex-row-space-between {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Error Messages */
+
+form .error {
+    color: red;
+    font-size: var(--fs-x-small);
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: var(--spacing);
+}
+
+form .error-border {
+    border: 2px solid red;
+    margin-bottom: 0;
+}
+
