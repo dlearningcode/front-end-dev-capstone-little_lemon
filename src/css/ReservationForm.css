@@ -1,0 +1,10 @@
+form .error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 0;
+    margin-bottom: 0.2em;
+}
+
+form .error-border {
+    border: 2px solid red;
+}

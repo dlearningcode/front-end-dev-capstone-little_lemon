@@ -79,6 +79,7 @@ export default function Main() {
               availableTimes={availableTimes}
               fetchTimes={fetchTimes}
               submitForm={submitForm}
+              today={today}
             />
           }
         />

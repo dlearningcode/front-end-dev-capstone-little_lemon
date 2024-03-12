@@ -1,7 +1,7 @@
 import "../css/Reservations.css";
 import ReservationForm from "../components/ReservationForm";
 
-export default function Reservations({ availableTimes, fetchTimes, submitForm }) {
+export default function Reservations({ availableTimes, fetchTimes, submitForm, today }) {
   return (
     <>
       <div aria-labelledby="reserve-table" className="reservations wrapper">
@@ -14,6 +14,7 @@ export default function Reservations({ availableTimes, fetchTimes, submitForm })
           availableTimes={availableTimes}
           fetchTimes={fetchTimes}
           submitForm={submitForm}
+          today={today}
         />
       </div>
     </>
