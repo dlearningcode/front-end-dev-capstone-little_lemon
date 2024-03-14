@@ -27,6 +27,7 @@ export default function ReservationForm({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    console.log("handleChange", formData);
 
     // If the name of the input field is reservationDate,
     // runc fetchTimes in Main component to get the available times
@@ -81,6 +82,7 @@ export default function ReservationForm({
     const todayDate = new Date(today);
     const selectedDate = new Date(formData.reservationDate);
     const isDateValid = selectedDate >= todayDate;
+    const countForCompare = parseInt(formData.guestCount);
 
     let errors = {
       reservationDate: isDateValid
@@ -89,19 +91,25 @@ export default function ReservationForm({
       reservationTime: formData.reservationTime
         ? ""
         : "Please choose an available time",
-      guestCount: (formData.guestCount = ""
-        ? "Please enter the number of guests"
-        : parseInt(formData.guestCount) > 10
-        ? "Please call us at (217) 555-1234 to schedule an event for 11 to 50 guests"
-        : ""),
+      guestCount:
+        formData.guestCount === ""
+          ? "Please enter the number of guests"
+          : countForCompare > 10
+          ? "Please call us at (217) 555-1234 to schedule an event for 11 to 50 guests"
+          : "",
       occasion: formData.occasion ? "" : "Please choose an occasion",
     };
 
     setFormErrors(errors);
 
-    return (
+    console.log("isDateValid", isDateValid);
+    console.log("formData.guestCount", formData.guestCount);
+    console.log(
+      "isFormValid",
       isDateValid && parseInt(formData.guestCount) <= 10
     );
+
+    return isDateValid && countForCompare <= 10;
   };
 
   const handleSubmit = (e) => {

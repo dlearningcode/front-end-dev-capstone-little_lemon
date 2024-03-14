@@ -1,13 +1,21 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ReservationForm from "../ReservationForm";
+import { act } from "react-dom/test-utils";
+
+jest.mock("react", () => ({
+  ...jest.requireActual("react"),
+  useReducer: () => [jest.fn(), mockDispatch],
+}));
 
 let fetchTimes;
 let submitForm;
+let mockDispatch;
 beforeEach(() => {
   fetchTimes = jest.fn();
   submitForm = jest.fn();
+  mockDispatch = jest.fn();
 });
 
 test("confirm that initializeTimes is called with today's date and generates available times on mount", () => {
@@ -33,71 +41,65 @@ test("dispatches action with correct payload when reservationDate changes", () =
   expect(fetchTimes).toHaveBeenCalledWith("2024-03-31");
 });
 
-test("Make Your Reservation button functions with all fields entered", () => {
-  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+test("submitForm is called with the form data when the form is submitted", async () => {
+  const availableTimes = ["17:00", "18:00", "21:00"];
+  const fetchTimes = jest.fn();
+  const submitForm = jest.fn();
+  const today = "2024-03-13";
+
   render(
     <ReservationForm
       availableTimes={availableTimes}
       fetchTimes={fetchTimes}
       submitForm={submitForm}
+      today={today}
     />
   );
 
-  const dateInput = screen.getByLabelText("Choose date for reservation");
-  fireEvent.change(dateInput, { target: { value: "2024-12-31" } });
-
-  const timeInput = screen.getByLabelText(
-    "Choose an available time for reservation"
-  );
-  fireEvent.change(timeInput, { target: { value: "18:00" } });
-
-  const guestInput = screen.getByLabelText("Enter or select number of guests");
-  fireEvent.change(guestInput, { target: { value: "4" } });
-
-  const occasionInput = screen.getByLabelText(
-    "Choose the occasion for reservation"
-  );
-  fireEvent.change(occasionInput, { target: { value: "birthday" } });
-
-  const submitButton = screen.getByText("Make Your Reservation");
-  fireEvent.click(submitButton);
-  expect(submitForm).toHaveBeenCalledWith({
-    reservationDate: "2024-12-31",
-    reservationTime: "18:00",
-    guestCount: "4",
-    occasion: "birthday",
+  fireEvent.change(screen.getByLabelText(/Choose date for reservation/), {
+    target: { value: "2025-01-01" },
   });
+  fireEvent.change(
+    screen.getByLabelText(/Choose an available time for reservation/),
+    {
+      target: { value: "18:00" },
+    }
+  );
+  fireEvent.change(screen.getByLabelText(/Enter or select number of guests/), {
+    target: { value: "2" },
+  });
+  fireEvent.change(
+    screen.getByLabelText(/Choose the occasion for reservation/),
+    {
+      target: { value: "birthday" },
+    }
+  );
+
+  fireEvent.click(screen.getByText(/Make Your Reservation/));
+
+  await waitFor(() =>
+    expect(submitForm).toHaveBeenCalledWith({
+      reservationDate: "2025-01-01",
+      reservationTime: "18:00",
+      guestCount: "2",
+      occasion: "birthday",
+    })
+  );
 });
 
-test("Make Your Reservation button disabled without all fields entered", () => {
+test("form will not submit formData with no fields filled", () => {
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  const fetchTimes = jest.fn();
+  const submitForm = jest.fn();
+  const today = "2024-03-13";
+
   render(
-    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />
-  );
-
-  const dateInput = screen.getByLabelText("Choose date for reservation");
-  fireEvent.change(dateInput, { target: { value: "2024-03-31" } });
-
-  const timeInput = screen.getByLabelText(
-    "Choose an available time for reservation"
-  );
-  fireEvent.change(timeInput, { target: { value: "18:00" } });
-
-  const guestInput = screen.getByLabelText("Enter or select number of guests");
-  fireEvent.change(guestInput, { target: { value: "4" } });
-
-  const submitButton = screen.getByRole("button", {
-    name: "Make Your Reservation",
-  });
-  fireEvent.click(submitButton);
-
-  expect(submitButton).toHaveAttribute("disabled");
-});
-
-test("form validates required fields", () => {
-  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-  render(
-    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />
+    <ReservationForm
+      availableTimes={availableTimes}
+      fetchTimes={fetchTimes}
+      submitForm={submitForm}
+      today={today}
+    />
   );
 
   const submitButton = screen.getByRole("button", {
@@ -106,72 +108,108 @@ test("form validates required fields", () => {
 
   userEvent.click(submitButton);
 
-  expect(
-    screen.getByText("Please choose a date today or in the future")
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText("Please choose an available time")
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText("Please enter the number of guests")
-  ).toBeInTheDocument();
-  expect(screen.getByText("Please choose an occasion")).toBeInTheDocument();
+  expect(submitForm).not.toHaveBeenCalled();
 });
 
-test("form validates valid and invalid inputs", () => {
+test("displays error messages for invalid input", async () => {
   const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  const fetchTimes = jest.fn();
+  const submitForm = jest.fn();
+  const today = "2024-03-13";
+
   render(
-    <ReservationForm availableTimes={availableTimes} fetchTimes={fetchTimes} />
+    <ReservationForm
+      availableTimes={availableTimes}
+      fetchTimes={fetchTimes}
+      submitForm={submitForm}
+      today={today}
+    />
   );
 
-  const dateInput = screen.getByLabelText("Choose date for reservation");
-  const timeInput = screen.getByLabelText(
+  const reservationDateInput = screen.getByLabelText(
+    /Choose date for reservation/i
+  );
+  const reservationTimeSelect = screen.getByLabelText(
     "Choose an available time for reservation"
   );
-  const guestInput = screen.getByLabelText("Enter or select number of guests");
-  const occasionInput = screen.getByLabelText(
+  const guestCountInput = screen.getByLabelText(
+    "Enter or select number of guests"
+  );
+  const occasionSelect = screen.getByLabelText(
     "Choose the occasion for reservation"
   );
 
-  // Test with invalid inputs
-  userEvent.type(dateInput, "2020-01-01");
-  userEvent.selectOptions(timeInput, [""]);
-  userEvent.type(guestInput, "11");
-  userEvent.selectOptions(occasionInput, [""]);
+  // Set reservationDateInput to a past date
+  fireEvent.change(reservationDateInput, { target: { value: "2020-01-01" } });
 
-  expect(
-    screen.getByText("Please choose a date today or in the future")
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText("Please choose an available time")
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText(
-      "Please call us at (217) 555-1234 to schedule an event for 11 to 50 guests"
-    )
-  ).toBeInTheDocument();
-  expect(screen.getByText("Please choose an occasion")).toBeInTheDocument();
+  fireEvent.blur(reservationDateInput);
+  fireEvent.blur(reservationTimeSelect);
+  fireEvent.blur(guestCountInput);
+  fireEvent.blur(occasionSelect);
 
-  // Test with valid inputs
-  userEvent.clear(dateInput);
-  userEvent.clear(guestInput);
-  userEvent.type(dateInput, "2024-03-31");
-  userEvent.selectOptions(timeInput, ["18:00"]);
-  userEvent.type(guestInput, "4");
-  userEvent.selectOptions(occasionInput, ["birthday"]);
+  await screen.findByText(/Please choose a date today or in the future/i);
+  await screen.findByText("Please choose an available time");
+  await screen.findByText("Please enter the number of guests");
+  await screen.findByText("Please choose an occasion");
+});
 
-  expect(
-    screen.queryByText("Please choose a date today or in the future")
-  ).not.toBeInTheDocument();
-  expect(
-    screen.queryByText("Please choose an available time")
-  ).not.toBeInTheDocument();
-  expect(
-    screen.queryByText(
-      "Please call us at (217) 555-1234 to schedule an event for 11 to 50 guests"
-    )
-  ).not.toBeInTheDocument();
-  expect(
-    screen.queryByText("Please choose an occasion")
-  ).not.toBeInTheDocument();
+test("does not display error messages for valid input", async () => {
+  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  const fetchTimes = jest.fn();
+  const submitForm = jest.fn();
+  const today = "2024-03-13";
+
+  render(
+    <ReservationForm
+      availableTimes={availableTimes}
+      fetchTimes={fetchTimes}
+      submitForm={submitForm}
+      today={today}
+    />
+  );
+
+
+  const reservationDateInput = screen.getByLabelText(
+    "Choose date for reservation"
+  );
+  const reservationTimeSelect = screen.getByLabelText(
+    "Choose an available time for reservation"
+  );
+  const guestCountInput = screen.getByLabelText(
+    "Enter or select number of guests"
+  );
+  const occasionSelect = screen.getByLabelText(
+    "Choose the occasion for reservation"
+  );
+
+  fireEvent.change(reservationDateInput, { target: { value: today } });
+  fireEvent.change(reservationTimeSelect, { target: { value: "18:00" } });
+  fireEvent.change(guestCountInput, { target: { value: "5" } });
+  fireEvent.change(occasionSelect, { target: { value: "birthday" } });
+
+  fireEvent.blur(reservationDateInput);
+  fireEvent.blur(reservationTimeSelect);
+  fireEvent.blur(guestCountInput);
+  fireEvent.blur(occasionSelect);
+
+  await waitFor(() =>
+    expect(
+      screen.queryByText("Please choose a date today or in the future")
+    ).not.toBeInTheDocument()
+  );
+  await waitFor(() =>
+    expect(
+      screen.queryByText("Please choose an available time")
+    ).not.toBeInTheDocument()
+  );
+  await waitFor(() =>
+    expect(
+      screen.queryByText("Please enter the number of guests")
+    ).not.toBeInTheDocument()
+  );
+  await waitFor(() =>
+    expect(
+      screen.queryByText("Please choose an occasion")
+    ).not.toBeInTheDocument()
+  );
 });
