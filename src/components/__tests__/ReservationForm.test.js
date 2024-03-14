@@ -117,6 +117,9 @@ test("displays error messages for invalid input", async () => {
   const submitForm = jest.fn();
   const today = "2024-03-13";
 
+  // Mock window.alert
+  const mockAlert = jest.spyOn(window, "alert").mockImplementation(() => {});
+
   render(
     <ReservationForm
       availableTimes={availableTimes}
@@ -142,6 +145,9 @@ test("displays error messages for invalid input", async () => {
   // Set reservationDateInput to a past date
   fireEvent.change(reservationDateInput, { target: { value: "2020-01-01" } });
 
+  // Set guestCountInput to a number between 11 and 50
+  fireEvent.change(guestCountInput, { target: { value: "15" } });
+
   fireEvent.blur(reservationDateInput);
   fireEvent.blur(reservationTimeSelect);
   fireEvent.blur(guestCountInput);
@@ -149,8 +155,13 @@ test("displays error messages for invalid input", async () => {
 
   await screen.findByText(/Please choose a date today or in the future/i);
   await screen.findByText("Please choose an available time");
-  await screen.findByText("Please enter the number of guests");
+  // await screen.findByText("Please enter the number of guests");
   await screen.findByText("Please choose an occasion");
+
+  // Check if window.alert has been called with the correct argument
+  expect(mockAlert).toHaveBeenCalledWith(
+    "Please call us at (217) 555-1234 to schedule an event for 11 to 50 guests"
+  );
 });
 
 test("does not display error messages for valid input", async () => {
@@ -167,7 +178,6 @@ test("does not display error messages for valid input", async () => {
       today={today}
     />
   );
-
 
   const reservationDateInput = screen.getByLabelText(
     "Choose date for reservation"
