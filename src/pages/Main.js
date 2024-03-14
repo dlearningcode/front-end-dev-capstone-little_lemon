@@ -50,7 +50,7 @@ export default function Main() {
 
   const submitForm = async (formData) => {
     const submittedForm = await submitAPI(formData);
-    console.log("submitForm", formData)
+    // console.log("submitForm", formData)
     if (submittedForm) {
       setReservationInfo(formData);
       navigate("/confirmed-booking");

@@ -27,7 +27,7 @@ export default function ReservationForm({
       ...formData,
       [e.target.name]: e.target.value,
     });
-    console.log("handleChange", formData);
+    // console.log("handleChange", formData);
 
     // If the name of the input field is reservationDate,
     // runc fetchTimes in Main component to get the available times
@@ -102,12 +102,12 @@ export default function ReservationForm({
 
     setFormErrors(errors);
 
-    console.log("isDateValid", isDateValid);
-    console.log("formData.guestCount", formData.guestCount);
-    console.log(
-      "isFormValid",
-      isDateValid && parseInt(formData.guestCount) <= 10
-    );
+    // console.log("isDateValid", isDateValid);
+    // console.log("formData.guestCount", formData.guestCount);
+    // console.log(
+    //   "isFormValid",
+    //   isDateValid && parseInt(formData.guestCount) <= 10
+    // );
 
     return isDateValid && countForCompare <= 10;
   };
