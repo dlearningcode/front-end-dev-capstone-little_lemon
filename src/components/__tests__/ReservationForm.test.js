@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ReservationForm from "../ReservationForm";
-import { act } from "react-dom/test-utils";
 
 jest.mock("react", () => ({
   ...jest.requireActual("react"),
