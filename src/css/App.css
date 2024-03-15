@@ -198,6 +198,22 @@ span,
   background-color: var(--primary-2);
 }
 
+/* Links */
+
+a {
+  color: var(--primary-1);
+  text-decoration: none;
+  transition: var(--transition-reg);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--highlight-2);
+}
+
 /* Buttons */
 
 .button {
@@ -235,9 +251,15 @@ span,
   color: var(--black);
 }
 
-.button:hover {
+.button a {
+  text-decoration: none;
+}
+
+.button:hover,
+.button a:hover {
   transform: translateY(-3px);
   box-shadow: var(--light-shadow);
+  text-decoration: none;
 }
 
 /* Grid */
@@ -321,20 +343,4 @@ form .error {
 form .error-border {
   border: 2px solid var(--secondary-1-warning);
   margin-bottom: 0;
-}
-
-/* Links */
-
-a {
-  color: var(--primary-1);
-  text-decoration: none;
-  transition: var(--transition-reg);
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:visited {
-  color: var(--highlight-2);
 }

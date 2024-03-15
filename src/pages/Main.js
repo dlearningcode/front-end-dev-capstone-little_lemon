@@ -19,6 +19,7 @@ export default function Main() {
   const navigate = useNavigate();
   const [reservationInfo, setReservationInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Since fetchAPI is an async function, we need to use the await keyword
   // to wait for the response to come back and then send it to the reducer function
@@ -54,8 +55,9 @@ export default function Main() {
   };
 
   const submitForm = async (formData) => {
+    setIsSubmitting(true);
     const submittedForm = await submitAPI(formData);
-    // console.log("submitForm", formData)
+    setIsSubmitting(false);
     if (submittedForm) {
       setReservationInfo(formData);
       navigate("/confirmed-booking");
@@ -99,6 +101,11 @@ export default function Main() {
         <Route path="/test" element={<Test />} />
         <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
+      {isSubmitting && (
+        <div className="modal">
+          <p>Adding your reservation to our calendar...</p>
+        </div>
+      )}
     </main>
   );
 }
