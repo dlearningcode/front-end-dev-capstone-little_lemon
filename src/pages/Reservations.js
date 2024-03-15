@@ -6,6 +6,7 @@ export default function Reservations({
   fetchTimes,
   submitForm,
   today,
+  isLoading,
 }) {
   return (
     <>

@@ -7,6 +7,7 @@ export default function ReservationForm({
   fetchTimes,
   submitForm,
   today,
+  isLoading,
 }) {
   const [formData, setFormData] = useState({
     reservationDate: "",
@@ -176,13 +177,17 @@ export default function ReservationForm({
             <option value="" disabled>
               Select
             </option>
-            {availableTimes.map((time, index) => {
-              return (
-                <option key={index} value={time}>
-                  {time}
-                </option>
-              );
-            })}
+            {isLoading ? (
+              <option>Loading...</option>
+            ) : (
+              availableTimes.map((time, index) => {
+                return (
+                  <option key={index} value={time}>
+                    {time}
+                  </option>
+                );
+              })
+            )}
           </select>
           {formErrors.reservationTime && (
             <div className="error">{formErrors.reservationTime}</div>

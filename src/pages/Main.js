@@ -18,12 +18,15 @@ export default function Main() {
   const [initialTimes, setInitialTimes] = useState([]);
   const navigate = useNavigate();
   const [reservationInfo, setReservationInfo] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   // Since fetchAPI is an async function, we need to use the await keyword
   // to wait for the response to come back and then send it to the reducer function
   // updateTimes as reducer functions are synchronous
   const fetchTimes = async (date) => {
+    setIsLoading(true);
     const times = await fetchAPI(date);
+    setIsLoading(false);
     dispatch({ type: "DATE_CHANGE", payload: times });
   };
 
@@ -31,7 +34,9 @@ export default function Main() {
   // to get the available times for today's date
   useEffect(() => {
     const initializeTimes = async () => {
+      setIsLoading(true);
       const times = await fetchAPI(today);
+      setIsLoading(false);
       setInitialTimes(times);
       dispatch({ type: "DATE_CHANGE", payload: times });
     };
@@ -81,6 +86,7 @@ export default function Main() {
               fetchTimes={fetchTimes}
               submitForm={submitForm}
               today={today}
+              isLoading={isLoading}
             />
           }
         />
