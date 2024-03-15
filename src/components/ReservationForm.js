@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/ReservationForm.css";
 import { removeTime } from "../scripts/masterapi.js";
 
@@ -21,6 +21,11 @@ export default function ReservationForm({
     guestCount: "",
     occasion: "",
   });
+
+  useEffect(() => {
+    // On page load, set focus to the first input field
+    document.getElementById("reservationDate").focus();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -136,7 +141,7 @@ export default function ReservationForm({
       <fieldset>
         <div className="field">
           <label htmlFor="reservationDate" className="card-title">
-            Choose date<span>*</span>
+            Enter or select the date of your reservation<span>*</span>
           </label>
           <input
             id="reservationDate"
@@ -145,7 +150,7 @@ export default function ReservationForm({
             onChange={handleChange}
             onBlur={handleBlur}
             type="date"
-            aria-label="Choose date for reservation"
+            aria-label="Enter or select the date of your reservation"
             className={formErrors.reservationDate ? "error-border" : ""}
             required
           />
@@ -155,7 +160,7 @@ export default function ReservationForm({
         </div>
         <div className="field">
           <label htmlFor="reservationTime" className="card-title">
-            Choose an available time<span>*</span>
+            Choose an available time on that date<span>*</span>
           </label>
           <select
             id="reservationTime"
@@ -164,7 +169,7 @@ export default function ReservationForm({
             onChange={handleChange}
             onBlur={handleBlur}
             type="time"
-            aria-label="Choose an available time for reservation"
+            aria-label="Choose an available time on that date"
             className={formErrors.reservationTime ? "error-border" : ""}
             required
           >
@@ -185,7 +190,7 @@ export default function ReservationForm({
         </div>
         <div className="field">
           <label htmlFor="guestCount" className="card-title">
-            Number of guests<span>*</span>
+            Enter or select number of guests<span>*</span>
           </label>
           <input
             id="guestCount"

@@ -35,7 +35,9 @@ test("dispatches action with correct payload when reservationDate changes", () =
     />
   );
 
-  const dateInput = screen.getByLabelText("Choose date for reservation");
+  const dateInput = screen.getByLabelText(
+    "Enter or select the date of your reservation"
+  );
   fireEvent.change(dateInput, { target: { value: "2024-03-31" } });
 
   expect(fetchTimes).toHaveBeenCalledWith("2024-03-31");
@@ -56,11 +58,14 @@ test("submitForm is called with the form data when the form is submitted", async
     />
   );
 
-  fireEvent.change(screen.getByLabelText(/Choose date for reservation/), {
-    target: { value: "2025-01-01" },
-  });
   fireEvent.change(
-    screen.getByLabelText(/Choose an available time for reservation/),
+    screen.getByLabelText(/Enter or select the date of your reservation/),
+    {
+      target: { value: "2025-01-01" },
+    }
+  );
+  fireEvent.change(
+    screen.getByLabelText(/Choose an available time on that date/),
     {
       target: { value: "18:00" },
     }
@@ -130,10 +135,10 @@ test("displays error messages for invalid input", async () => {
   );
 
   const reservationDateInput = screen.getByLabelText(
-    /Choose date for reservation/i
+    /Enter or select the date of your reservation/i
   );
   const reservationTimeSelect = screen.getByLabelText(
-    "Choose an available time for reservation"
+    "Choose an available time on that date"
   );
   const guestCountInput = screen.getByLabelText(
     "Enter or select number of guests"
@@ -180,10 +185,10 @@ test("does not display error messages for valid input", async () => {
   );
 
   const reservationDateInput = screen.getByLabelText(
-    "Choose date for reservation"
+    "Enter or select the date of your reservation"
   );
   const reservationTimeSelect = screen.getByLabelText(
-    "Choose an available time for reservation"
+    "Choose an available time on that date"
   );
   const guestCountInput = screen.getByLabelText(
     "Enter or select number of guests"

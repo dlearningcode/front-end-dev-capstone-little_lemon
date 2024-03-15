@@ -22,8 +22,11 @@ export default function ConfirmedBooking({ reservationInfo }) {
   }
 
   return (
-    <div className="confirmed-booking text-wrapper">
-      <h1>Reservation Confirmed</h1>
+    <div
+      aria-labelledby="reservation-confirmed"
+      className="confirmed-booking text-wrapper"
+    >
+      <h1 id="reservation-confirmed">Reservation Confirmed</h1>
       <p>
         Thank you for choosing Little Lemon! Your reservation is confirmed. We
         can't wait to see you!
