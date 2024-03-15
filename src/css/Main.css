@@ -3,5 +3,5 @@ main {
 }
 
 main h1, main h2 {
-    color: var(--primary-2);
+    color: var(--highlight-2);
 }

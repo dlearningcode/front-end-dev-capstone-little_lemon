@@ -51,3 +51,15 @@
     border: 2px solid var(--secondary-1-warning);
     margin-bottom: 0;
 }
+
+@media (max-width: 480px) {
+    .reservation-form {
+        width: 100vw;
+        padding: 0;
+    }
+    
+    .reservation-form fieldset {
+        border: none;
+        padding: 0 var(--padding-med) var(--padding-large);
+    }
+}

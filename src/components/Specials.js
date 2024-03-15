@@ -13,7 +13,7 @@ export default function Specials() {
     >
       <div className="wrapper">
         <div className="title-button">
-          <h2 id="this-weeks-specials-section" className="text-primary-2">
+          <h2 id="this-weeks-specials-section">
             This Week's Specials
           </h2>
           <Link to="/menu" className="button button-primary-2">
